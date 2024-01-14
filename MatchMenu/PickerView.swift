@@ -9,7 +9,10 @@ import Foundation
 import SwiftUI
 
 enum Team: String, CaseIterable, Identifiable {
-    case ManchesterUnited, Chelsea, Liverpool
+    case ManchesterUnited = "Manchester United",
+         Chelsea = "Chelsea",
+         Liverpool = "Liverpool"
+    
     var id: Self { self }
 }
 
