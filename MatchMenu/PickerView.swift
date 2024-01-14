@@ -10,8 +10,26 @@ import SwiftUI
 
 enum Team: String, CaseIterable, Identifiable {
     case ManchesterUnited = "Manchester United",
-         Chelsea = "Chelsea",
-         Liverpool = "Liverpool"
+         Chelsea = "Chelsea FC",
+         Liverpool = "Liverpool FC",
+         AFCBournemouth = "AFC Bournemouth",
+         ArsenalFC = "Arsenal FC",
+         AstonVilla = "Aston Villa",
+          BrentfordFC = "Brentford FC",
+          Brighton = "Brighton & Hove Albion",
+          Burnley = "Burnley FC",
+          CrystalPalace = "Crystal Palace FC",
+          Everton = "Everton FC",
+          Fulham = "Fulham FC",
+          LutonTown = "Luton Town FC",
+          ManchesterCity = "Manchester City",
+          NewcastleUnited = "Newcastle United",
+          NottinghamForest = "Nottingham Forest",
+          SheffieldUnited = "Sheffield United",
+          TottenhamHotspur = "Tottenham Hotspur",
+          WestHamUnited = "West Ham United",
+          WolverhamptonWanderers = "Wolverhampton Wanderers"
+    
     
     var id: Self { self }
 }
