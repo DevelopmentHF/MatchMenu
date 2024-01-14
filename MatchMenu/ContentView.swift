@@ -11,7 +11,7 @@ struct ContentView: View {
     
     @State var selectedTeam: Team = .ManchesterUnited
     
-    @State private var apiData: [String: Any]?
+    @State var matches: [String: Any] = [:]
     
     var body: some View {
         VStack {
@@ -19,11 +19,12 @@ struct ContentView: View {
             Divider()
             NextFixtureView(selectedTeam: $selectedTeam)
             Divider()
-            Button("read json") {
-                readJSONFromFile()
-            }
         }
         .padding()
+        .onAppear {
+            readJSONFromFile()
+            print(matches)
+        }
     }
     
     func readJSONFromFile() {
@@ -36,7 +37,7 @@ struct ContentView: View {
                 // Parse the JSON data
                 if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
                     // Now 'json' is a dictionary containing your JSON data
-                    print(json)
+                    matches = json
 
                 } else {
                     print("Failed to parse JSON")

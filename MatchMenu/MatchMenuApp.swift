@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct MatchMenuApp: App {
+    
     var body: some Scene {
         // Create a MenuBarExtra with the "hammer" system image
         MenuBarExtra("MatchMenu", systemImage: "sportscourt.fill") {
