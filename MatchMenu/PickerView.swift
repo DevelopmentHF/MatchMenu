@@ -16,7 +16,7 @@ enum Team: String, CaseIterable, Identifiable {
 struct PickerView: View {
     
     // try set it to a default? then use @AppStorage to save it?
-    @State private var selectedTeam: Team = .ManchesterUnited
+    @Binding var selectedTeam: Team
     
     var body: some View {
         HStack {
@@ -32,6 +32,6 @@ struct PickerView: View {
     }
 }
 
-#Preview {
-    PickerView()
-}
+//#Preview {
+//    PickerView(selectedTeam: )
+//}

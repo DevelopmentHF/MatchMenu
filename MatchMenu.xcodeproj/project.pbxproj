@@ -15,6 +15,7 @@
 		3FAC8B172B538716000D00A4 /* MatchMenuUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC8B162B538716000D00A4 /* MatchMenuUITests.swift */; };
 		3FAC8B192B538716000D00A4 /* MatchMenuUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC8B182B538716000D00A4 /* MatchMenuUITestsLaunchTests.swift */; };
 		3FAC8B262B53891E000D00A4 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC8B252B53891E000D00A4 /* PickerView.swift */; };
+		3FAC8B282B53AAD5000D00A4 /* NextFixtureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC8B272B53AAD5000D00A4 /* NextFixtureView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		3FAC8B162B538716000D00A4 /* MatchMenuUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchMenuUITests.swift; sourceTree = "<group>"; };
 		3FAC8B182B538716000D00A4 /* MatchMenuUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchMenuUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3FAC8B252B53891E000D00A4 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
+		3FAC8B272B53AAD5000D00A4 /* NextFixtureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextFixtureView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				3FAC8B032B538716000D00A4 /* MatchMenu.entitlements */,
 				3FAC8B002B538716000D00A4 /* Preview Content */,
 				3FAC8B252B53891E000D00A4 /* PickerView.swift */,
+				3FAC8B272B53AAD5000D00A4 /* NextFixtureView.swift */,
 			);
 			path = MatchMenu;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FAC8AFD2B538715000D00A4 /* ContentView.swift in Sources */,
+				3FAC8B282B53AAD5000D00A4 /* NextFixtureView.swift in Sources */,
 				3FAC8AFB2B538715000D00A4 /* MatchMenuApp.swift in Sources */,
 				3FAC8B262B53891E000D00A4 /* PickerView.swift in Sources */,
 			);

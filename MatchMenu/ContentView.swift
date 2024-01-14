@@ -8,14 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var selectedTeam: Team = .ManchesterUnited
+    
     var body: some View {
         VStack {
-            PickerView()
+            PickerView(selectedTeam: $selectedTeam)
+            Divider()
+            NextFixtureView(selectedTeam: $selectedTeam)
         }
         .padding()
     }
 }
 
-#Preview {
-    ContentView()
-}
+//#Preview {
+//    ContentView()
+//}
+
