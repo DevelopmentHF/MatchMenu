@@ -19,6 +19,9 @@ struct ContentView: View {
             Divider()
             NextFixtureView(selectedTeam: $selectedTeam)
             Divider()
+            Button("Quit") {
+                NSApplication.shared.terminate(nil)
+            }.keyboardShortcut("q")
         }
         .padding()
         .onAppear {
@@ -26,7 +29,7 @@ struct ContentView: View {
             print(matches)
         }
     }
-    
+ 
     func readJSONFromFile() {
         // Get the file URL for the JSON file in your app bundle
         if let fileURL = Bundle.main.url(forResource: "PL_2023-24_Fixture", withExtension: "json") {
