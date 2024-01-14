@@ -14,6 +14,7 @@
 		3FAC8B0D2B538716000D00A4 /* MatchMenuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC8B0C2B538716000D00A4 /* MatchMenuTests.swift */; };
 		3FAC8B172B538716000D00A4 /* MatchMenuUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC8B162B538716000D00A4 /* MatchMenuUITests.swift */; };
 		3FAC8B192B538716000D00A4 /* MatchMenuUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC8B182B538716000D00A4 /* MatchMenuUITestsLaunchTests.swift */; };
+		3FAC8B262B53891E000D00A4 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC8B252B53891E000D00A4 /* PickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		3FAC8B122B538716000D00A4 /* MatchMenuUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MatchMenuUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FAC8B162B538716000D00A4 /* MatchMenuUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchMenuUITests.swift; sourceTree = "<group>"; };
 		3FAC8B182B538716000D00A4 /* MatchMenuUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchMenuUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3FAC8B252B53891E000D00A4 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				3FAC8AFE2B538716000D00A4 /* Assets.xcassets */,
 				3FAC8B032B538716000D00A4 /* MatchMenu.entitlements */,
 				3FAC8B002B538716000D00A4 /* Preview Content */,
+				3FAC8B252B53891E000D00A4 /* PickerView.swift */,
 			);
 			path = MatchMenu;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			files = (
 				3FAC8AFD2B538715000D00A4 /* ContentView.swift in Sources */,
 				3FAC8AFB2B538715000D00A4 /* MatchMenuApp.swift in Sources */,
+				3FAC8B262B53891E000D00A4 /* PickerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
