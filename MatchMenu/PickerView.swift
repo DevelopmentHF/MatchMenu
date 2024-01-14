@@ -26,7 +26,7 @@ struct PickerView: View {
             Image(systemName: "soccerball.inverse")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
-            Picker("Select a team",
+            Picker("",
                    selection: $selectedTeam) {
                 ForEach(Team.allCases) { team in
                     Text(team.rawValue.capitalized)}

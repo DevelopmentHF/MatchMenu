@@ -12,10 +12,21 @@ struct NextFixtureView: View {
     @Binding var selectedTeam: Team
     
     var body: some View {
-        Text("\(selectedTeam.rawValue.capitalized)")
+        VStack {
+            Text("Matchday 21")
+                .font(.headline)
+            Text("16/01/2024")
+                .font(.subheadline)
+        }
+        
+        HStack {
+            Text("Manchester United (H)")
+            Divider()
+            Text("Everton (A)")
+        }
     }
 }
 
-//#Preview {
-//    NextFixtureView()
-//}
+#Preview {
+    NextFixtureView(selectedTeam: .constant(.ManchesterUnited))
+}
