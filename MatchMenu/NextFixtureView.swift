@@ -20,9 +20,15 @@ struct NextFixtureView: View {
         }
         
         HStack {
+            Image("Manchester United")
+                .resizable()
+                .frame(width: 24.57, height: 32.0)
             Text("Manchester United (H)")
             Divider()
-            Text("Everton (A)")
+            Image("Tottenham Hotspur")
+                .resizable()
+                .frame(width: 24.57, height: 32.0)
+            Text("Tottenham Hotspur (A)")
         }
     }
 }

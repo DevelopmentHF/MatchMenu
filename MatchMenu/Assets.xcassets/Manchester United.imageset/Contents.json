@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "Manchester United.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
