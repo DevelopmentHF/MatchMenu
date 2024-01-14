@@ -12,11 +12,22 @@ struct NextFixtureView: View {
     @Binding var selectedTeam: Team
     
     var body: some View {
-        VStack {
-            Text("Matchday 21")
-                .font(.headline)
-            Text("16/01/2024")
-                .font(.subheadline)
+        
+        HStack {
+            Button("<") {
+                
+            }
+            
+            VStack {
+                Text("Matchday 21")
+                    .font(.headline)
+                Text("16/01/2024")
+                    .font(.subheadline)
+            }
+            
+            Button(">") {
+                
+            }
         }
         
         HStack {

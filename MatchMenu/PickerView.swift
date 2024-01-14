@@ -23,9 +23,9 @@ struct PickerView: View {
     
     var body: some View {
         HStack {
-            Image(systemName: "soccerball.inverse")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
+//            Image(systemName: "soccerball.inverse")
+//                .imageScale(.large)
+//                .foregroundStyle(.tint)
             Picker("",
                    selection: $selectedTeam) {
                 ForEach(Team.allCases) { team in
