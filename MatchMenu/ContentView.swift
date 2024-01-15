@@ -31,7 +31,12 @@ struct ContentView: View {
                 
                 Spacer()
                 
-                Image(systemName: "eye.slash")
+                Button(action: {
+                    
+                }, label: {
+                    Image(systemName: "eye")
+                }).buttonStyle(PlainButtonStyle())
+                
             }
             
             
