@@ -32,6 +32,10 @@ enum Team: String, CaseIterable, Identifiable {
     
     
     var id: Self { self }
+    
+    init?(id: String) {
+        self = Team(rawValue: id) ?? .ManchesterUnited
+    }
 }
 
 struct PickerView: View {
@@ -41,17 +45,35 @@ struct PickerView: View {
     
     var body: some View {
         HStack {
-//            Image(systemName: "soccerball.inverse")
-//                .imageScale(.large)
-//                .foregroundStyle(.tint)
             Picker("",
                    selection: $selectedTeam) {
                 ForEach(Team.allCases) { team in
                     Text(team.rawValue.capitalized)}
             }
         }
+        .onChange(of: selectedTeam) { oldValue, newValue in
+            saveSelectedTeam(selectedTeam: newValue)
+        }
+        .onAppear() {
+            loadSelectedTeam()
+        }
+    }
+    
+    func saveSelectedTeam(selectedTeam: Team) {
+        UserDefaults.standard.set(selectedTeam.id.rawValue, forKey: "last-chosen-team")
+    }
+    
+    func loadSelectedTeam() {
+        if let teamId = UserDefaults.standard.string(forKey: "last-chosen-team"),
+           let team = Team(id: teamId) {
+            selectedTeam = team
+        } else {
+            selectedTeam = .ManchesterUnited
+        }
     }
 }
+
+
 
 //#Preview {
 //    PickerView(selectedTeam: )

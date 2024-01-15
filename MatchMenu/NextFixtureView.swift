@@ -10,6 +10,7 @@ import SwiftUI
 
 struct NextFixtureView: View {
     @Binding var selectedTeam: Team
+    var currentMatchDay: Date = Date()
     
     var body: some View {
         
@@ -21,7 +22,7 @@ struct NextFixtureView: View {
             VStack {
                 Text("Matchday 21")
                     .font(.headline)
-                Text("16/01/2024")
+                Text("15/01/2024")
                     .font(.subheadline)
             }
             
