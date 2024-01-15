@@ -16,6 +16,7 @@
 		3FAC8B192B538716000D00A4 /* MatchMenuUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC8B182B538716000D00A4 /* MatchMenuUITestsLaunchTests.swift */; };
 		3FAC8B262B53891E000D00A4 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC8B252B53891E000D00A4 /* PickerView.swift */; };
 		3FAC8B282B53AAD5000D00A4 /* NextFixtureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC8B272B53AAD5000D00A4 /* NextFixtureView.swift */; };
+		3FAC8B342B550E59000D00A4 /* FixtureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC8B332B550E59000D00A4 /* FixtureView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		3FAC8B182B538716000D00A4 /* MatchMenuUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchMenuUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3FAC8B252B53891E000D00A4 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 		3FAC8B272B53AAD5000D00A4 /* NextFixtureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextFixtureView.swift; sourceTree = "<group>"; };
+		3FAC8B332B550E59000D00A4 /* FixtureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixtureView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		3FAC8AEE2B538715000D00A4 = {
 			isa = PBXGroup;
 			children = (
+				3FAC8B332B550E59000D00A4 /* FixtureView.swift */,
 				3FAC8AF92B538715000D00A4 /* MatchMenu */,
 				3FAC8B0B2B538716000D00A4 /* MatchMenuTests */,
 				3FAC8B152B538716000D00A4 /* MatchMenuUITests */,
@@ -269,6 +272,7 @@
 				3FAC8B282B53AAD5000D00A4 /* NextFixtureView.swift in Sources */,
 				3FAC8AFB2B538715000D00A4 /* MatchMenuApp.swift in Sources */,
 				3FAC8B262B53891E000D00A4 /* PickerView.swift in Sources */,
+				3FAC8B342B550E59000D00A4 /* FixtureView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

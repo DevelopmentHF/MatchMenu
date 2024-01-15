@@ -12,10 +12,10 @@ enum Team: String, CaseIterable, Identifiable {
     case ManchesterUnited = "Manchester United",
          Chelsea = "Chelsea FC",
          Liverpool = "Liverpool FC",
-         AFCBournemouth = "AFC Bournemouth",
-         ArsenalFC = "Arsenal FC",
+         Bournemouth = "AFC Bournemouth",
+         Arsenal = "Arsenal FC",
          AstonVilla = "Aston Villa",
-          BrentfordFC = "Brentford FC",
+          Brentford = "Brentford FC",
           Brighton = "Brighton & Hove Albion",
           Burnley = "Burnley FC",
           CrystalPalace = "Crystal Palace FC",
@@ -45,19 +45,21 @@ struct PickerView: View {
     @Binding var matches: [String: Any]
     
     var body: some View {
-        HStack {
-            Picker("",
-                   selection: $selectedTeam) {
-                ForEach(Team.allCases) { team in
-                    Text(team.rawValue)}
-            }
-        }
+//        HStack {
+//            Picker("",
+//                   selection: $selectedTeam) {
+//                ForEach(Team.allCases) { team in
+//                    Text(team.rawValue)}
+//            }
+//        }
+        Text("Matchday 21")
+            .font(.headline)
         .onChange(of: selectedTeam) { oldValue, newValue in
             saveSelectedTeam(selectedTeam: newValue)
         }
         .onAppear() {
             loadSelectedTeam()
-            fetchData()
+            // fetchData() // reinsert this when you need the API -> dont want to waste calls
         }
     }
     
