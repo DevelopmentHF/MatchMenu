@@ -42,19 +42,22 @@ struct PickerView: View {
     
     // try set it to a default? then use @AppStorage to save it?
     @Binding var selectedTeam: Team
+    @Binding var matches: [String: Any]
     
     var body: some View {
         HStack {
             Picker("",
                    selection: $selectedTeam) {
                 ForEach(Team.allCases) { team in
-                    Text(team.rawValue.capitalized)}
+                    Text(team.rawValue)}
             }
         }
         .onChange(of: selectedTeam) { oldValue, newValue in
             saveSelectedTeam(selectedTeam: newValue)
+            readJSONFromFile()
         }
         .onAppear() {
+            readJSONFromFile()
             loadSelectedTeam()
         }
     }
@@ -69,6 +72,29 @@ struct PickerView: View {
             selectedTeam = team
         } else {
             selectedTeam = .ManchesterUnited
+        }
+    }
+    
+    func readJSONFromFile() {
+        // Get the file URL for the JSON file in your app bundle
+        if let fileURL = Bundle.main.url(forResource: "\(selectedTeam)", withExtension: "json") {
+            do {
+                // Read the JSON data from the file
+                let data = try Data(contentsOf: fileURL)
+                
+                // Parse the JSON data
+                if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                    // Now 'json' is a dictionary containing your JSON data
+                    matches = json
+
+                } else {
+                    print("Failed to parse JSON")
+                }
+            } catch {
+                print("Error reading JSON file: \(error.localizedDescription)")
+            }
+        } else {
+            print("JSON file not found in the app bundle")
         }
     }
 }

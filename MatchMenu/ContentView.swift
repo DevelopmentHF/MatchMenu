@@ -11,13 +11,13 @@ struct ContentView: View {
     
     @State var selectedTeam: Team = .ManchesterUnited
     
-    @Binding var matches: [String: Any]
+    @State var matches: [String: Any] = [:]
     
     var body: some View {
         VStack {
-            PickerView(selectedTeam: $selectedTeam)
+            PickerView(selectedTeam: $selectedTeam, matches: $matches)
             Divider()
-            NextFixtureView(selectedTeam: $selectedTeam)
+            NextFixtureView(selectedTeam: $selectedTeam, matches: $matches)
             Divider()
             Button("Quit") {
                 NSApplication.shared.terminate(nil)
@@ -25,10 +25,5 @@ struct ContentView: View {
         }
         .padding()
     }
-
 }
-
-//#Preview {
-//    ContentView()
-//}
 
