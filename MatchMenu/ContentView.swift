@@ -19,9 +19,22 @@ struct ContentView: View {
             Divider()
             NextFixtureView(selectedTeam: $selectedTeam, matches: $matches)
             Divider()
-            Button("Quit") {
-                NSApplication.shared.terminate(nil)
-            }.keyboardShortcut("q")
+            
+            HStack {
+                Button() {
+                    NSApplication.shared.terminate(nil)
+                } label: {
+                    Image(systemName: "power")
+                }
+                .keyboardShortcut("q")
+                .buttonStyle(PlainButtonStyle())
+                
+                Spacer()
+                
+                Image(systemName: "eye.slash")
+            }
+            
+            
         }
         .padding()
     }

@@ -87,7 +87,8 @@ struct NextFixtureView: View {
                    let round = leagueInfo["round"] as? String {
                     print("Round: \(round)")
 
-                    // Find the numeric characters at the end of the string
+                    // Find the numeric characters at the end of the string by removing all characters
+                    // not in the char set 0-9
                     let numericCharacters = round.trimmingCharacters(in: CharacterSet.decimalDigits.inverted)
 
                     // Convert the numeric characters to an integer
