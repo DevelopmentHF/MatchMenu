@@ -59,7 +59,7 @@ struct PickerView: View {
         }
         .onAppear() {
             loadSelectedTeam()
-            // fetchData() // reinsert this when you need the API -> dont want to waste calls
+             fetchData() // reinsert this when you need the API -> dont want to waste calls
         }
     }
     
@@ -114,6 +114,7 @@ struct PickerView: View {
                             // convert the json into a variable other views can access
                             if let jsonDict = json as? [String: Any] {
                                 matches = jsonDict
+                                //print(matches)
                             } else {
                                 print("failed to convert serialised json into a variable")
                             }

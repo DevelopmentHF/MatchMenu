@@ -62,90 +62,69 @@ struct NextFixtureView: View {
         // Matchday shenanigans
         dateFormatter.dateFormat = "dd MMMM yyyy"
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        
         // these are in UK time
-        let matchdays = [
-                ["start": dateFormatter.date(from: "11 August 2023") ?? Date(),
-                 "end": dateFormatter.date(from: "14 August 2023") ?? Date()],
-                ["start": dateFormatter.date(from: "18 August 2023") ?? Date(),
-                 "end": dateFormatter.date(from: "03 October 2023") ?? Date()],
-                ["start": dateFormatter.date(from: "25 August 2023") ?? Date(),
-                 "end": dateFormatter.date(from: "27 October 2023") ?? Date()],
-                ["start": dateFormatter.date(from: "01 September 2023") ?? Date(),
-                 "end": dateFormatter.date(from: "03 September 2023") ?? Date()],
-                ["start": dateFormatter.date(from: "16 September 2023") ?? Date(),
-                 "end": dateFormatter.date(from: "18 September 2023") ?? Date()],
-                ["start": dateFormatter.date(from: "23 September 2023") ?? Date(),
-                 "end": dateFormatter.date(from: "24 September 2023") ?? Date()],
-                ["start": dateFormatter.date(from: "30 September 2023") ?? Date(),
-                 "end": dateFormatter.date(from: "02 October 2023") ?? Date()],
-                ["start": dateFormatter.date(from: "07 October 2023") ?? Date(),
-                 "end": dateFormatter.date(from: "08 October 2023") ?? Date()],
-                ["start": dateFormatter.date(from: "21 October 2023") ?? Date(),
-                 "end": dateFormatter.date(from: "23 October 2023") ?? Date()],
-                ["start": dateFormatter.date(from: "27 October 2023") ?? Date(),
-                 "end": dateFormatter.date(from: "29 October 2023") ?? Date()],
-                ["start": dateFormatter.date(from: "04 November 2023") ?? Date(),
-                 "end": dateFormatter.date(from: "06 November 2023") ?? Date()],
-                ["start": dateFormatter.date(from: "11 November 2023") ?? Date(),
-                 "end": dateFormatter.date(from: "12 November 2023") ?? Date()],
-                ["start": dateFormatter.date(from: "25 November 2023") ?? Date(),
-                 "end": dateFormatter.date(from: "27 November 2023") ?? Date()],
-                ["start": dateFormatter.date(from: "02 December 2023") ?? Date(),
-                 "end": dateFormatter.date(from: "03 December 2023") ?? Date()],
-                ["start": dateFormatter.date(from: "05 December 2023") ?? Date(),
-                 "end": dateFormatter.date(from: "07 December 2023") ?? Date()],
-                ["start": dateFormatter.date(from: "09 December 2023") ?? Date(),
-                 "end": dateFormatter.date(from: "10 December 2023") ?? Date()],
-                ["start": dateFormatter.date(from: "15 December 2023") ?? Date(),
-                 "end": dateFormatter.date(from: "18 May 2024") ?? Date()],
-                ["start": dateFormatter.date(from: "21 December 2023") ?? Date(),
-                 "end": dateFormatter.date(from: "20 February 2024") ?? Date()],
-                ["start": dateFormatter.date(from: "26 December 2023") ?? Date(),
-                 "end": dateFormatter.date(from: "28 December 2023") ?? Date()],
-                ["start": dateFormatter.date(from: "30 December 2023") ?? Date(),
-                 "end": dateFormatter.date(from: "02 January 2024") ?? Date()],
-                ["start": dateFormatter.date(from: "12 January 2024") ?? Date(),
-                 "end": dateFormatter.date(from: "22 January 2024") ?? Date()],
-                ["start": dateFormatter.date(from: "30 January 2024") ?? Date(),
-                 "end": dateFormatter.date(from: "01 February 2024") ?? Date()],
-                ["start": dateFormatter.date(from: "03 February 2024") ?? Date(),
-                 "end": dateFormatter.date(from: "05 February 2024") ?? Date()],
-                ["start": dateFormatter.date(from: "10 February 2024") ?? Date(),
-                 "end": dateFormatter.date(from: "12 February 2024") ?? Date()],
-                ["start": dateFormatter.date(from: "17 February 2024") ?? Date(),
-                 "end": dateFormatter.date(from: "19 February 2024") ?? Date()],
-                ["start": dateFormatter.date(from: "23 February 2024") ?? Date(),
-                 "end": dateFormatter.date(from: "26 February 2024") ?? Date()],
-                ["start": dateFormatter.date(from: "02 March 2024") ?? Date(),
-                 "end": dateFormatter.date(from: "02 March 2024") ?? Date()], // Assuming it's a single-day matchday
-                ["start": dateFormatter.date(from: "09 March 2024") ?? Date(),
-                 "end": dateFormatter.date(from: "09 March 2024") ?? Date()], // Assuming it's a single-day matchday
-                ["start": dateFormatter.date(from: "16 March 2024") ?? Date(),
-                 "end": dateFormatter.date(from: "16 March 2024") ?? Date()], // Assuming it's a single-day matchday
-                ["start": dateFormatter.date(from: "30 March 2024") ?? Date(),
-                 "end": dateFormatter.date(from: "30 March 2024") ?? Date()], // Assuming it's a single-day matchday
-                ["start": dateFormatter.date(from: "02 April 2024") ?? Date(),
-                 "end": dateFormatter.date(from: "03 April 2024") ?? Date()],
-                ["start": dateFormatter.date(from: "06 April 2024") ?? Date(),
-                 "end": dateFormatter.date(from: "06 April 2024") ?? Date()], // Assuming it's a single-day matchday
-                ["start": dateFormatter.date(from: "13 April 2024") ?? Date(),
-                 "end": dateFormatter.date(from: "13 April 2024") ?? Date()], // Assuming it's a single-day matchday
-                ["start": dateFormatter.date(from: "20 April 2024") ?? Date(),
-                 "end": dateFormatter.date(from: "20 April 2024") ?? Date()], // Assuming it's a single-day matchday
-                ["start": dateFormatter.date(from: "27 April 2024") ?? Date(),
-                 "end": dateFormatter.date(from: "27 April 2024") ?? Date()], // Assuming it's a single-day matchday
-                ["start": dateFormatter.date(from: "04 May 2024") ?? Date(),
-                 "end": dateFormatter.date(from: "04 May 2024") ?? Date()], // Assuming it's a single-day matchday
-                ["start": dateFormatter.date(from: "11 May 2024") ?? Date(),
-                 "end": dateFormatter.date(from: "11 May 2024") ?? Date()], // Assuming it's a single-day matchday
-                ["start": dateFormatter.date(from: "19 May 2024") ?? Date(),
-                 "end": dateFormatter.date(from: "19 May 2024") ?? Date()] // Assuming it's a single-day matchday
-        ]
+        var matchdays: [[String: Any]] = []
+        fillMatchdaysArray(arr: &matchdays)
         
         // convert current local time into a given Matchday `x` in UK time
-        print(matchdays[0])
+
         
         // go thru all matches in json which also fall into Matchday `x`
         
+    }
+    
+    func fillMatchdaysArray(arr: inout [[String: Any]]) {
+        // get array of fixtures to find out which matchday is when
+
+        if let jsonDict = matches as? [String: Any],
+           let responseArray = jsonDict["response"] as? [[String: Any]] {
+
+            for fixture in responseArray {
+                // THIS IS THE FORMAT OF 'fixture'
+//                "fixture": {
+//                    date = "2023-08-11T19:00:00+00:00";
+//                    id = 1035037;
+//                    periods =     {
+//                        first = 1691780400;
+//                        second = 1691784000;
+//                    };
+//                    referee = "Craig Pawson, England";
+//                    status =     {
+//                        elapsed = 90;
+//                        long = "Match Finished";
+//                        short = FT;
+//                    };
+//                    timestamp = 1691780400;
+//                    timezone = UTC;
+//                    venue =     {
+//                        city = Burnley;
+//                        id = 512;
+//                        name = "Turf Moor";
+//                    };
+//                }, "goals": {
+//                    away = 3;
+//                    home = 0;
+//                }, "score": {
+//                    extratime =     {
+//                        away = "<null>";
+//                        home = "<null>";
+//                    };
+//                    fulltime =     {
+//                        away = 3;
+//                        home = 0;
+//                    };
+//                    halftime =     {
+//                        away = 2;
+//                        home = 0;
+//                    };
+//                    penalty =     {
+//                        away = "<null>";
+//                        home = "<null>";
+//                    };
+//                }
+                print(fixture)
+            }
+        }
     }
 }
