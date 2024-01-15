@@ -77,53 +77,29 @@ struct NextFixtureView: View {
     func fillMatchdaysArray(arr: inout [[String: Any]]) {
         // get array of fixtures to find out which matchday is when
 
-        if let jsonDict = matches as? [String: Any],
-           let responseArray = jsonDict["response"] as? [[String: Any]] {
-
+        if let responseArray = matches["response"] as? [[String: Any]] {
+            var matchdayInteger = 0
             for fixture in responseArray {
-                // THIS IS THE FORMAT OF 'fixture'
-//                "fixture": {
-//                    date = "2023-08-11T19:00:00+00:00";
-//                    id = 1035037;
-//                    periods =     {
-//                        first = 1691780400;
-//                        second = 1691784000;
-//                    };
-//                    referee = "Craig Pawson, England";
-//                    status =     {
-//                        elapsed = 90;
-//                        long = "Match Finished";
-//                        short = FT;
-//                    };
-//                    timestamp = 1691780400;
-//                    timezone = UTC;
-//                    venue =     {
-//                        city = Burnley;
-//                        id = 512;
-//                        name = "Turf Moor";
-//                    };
-//                }, "goals": {
-//                    away = 3;
-//                    home = 0;
-//                }, "score": {
-//                    extratime =     {
-//                        away = "<null>";
-//                        home = "<null>";
-//                    };
-//                    fulltime =     {
-//                        away = 3;
-//                        home = 0;
-//                    };
-//                    halftime =     {
-//                        away = 2;
-//                        home = 0;
-//                    };
-//                    penalty =     {
-//                        away = "<null>";
-//                        home = "<null>";
-//                    };
-//                }
                 print(fixture)
+                var curInt = 0
+                
+                if let leagueInfo = fixture["league"] as? [String: Any],
+                   let round = leagueInfo["round"] as? String {
+                    print("Round: \(round)")
+
+                    // Find the numeric characters at the end of the string
+                    let numericCharacters = round.trimmingCharacters(in: CharacterSet.decimalDigits.inverted)
+
+                    // Convert the numeric characters to an integer
+                    if let roundNumber = Int(numericCharacters) {
+                        print("Last Numeric Characters of Round: \(numericCharacters)")
+                        print("Round Number: \(roundNumber)")
+                        curInt = roundNumber
+                    }
+                }
+                if (matchdayInteger != curInt) {
+                    print("mismatch")
+                }
             }
         }
     }
