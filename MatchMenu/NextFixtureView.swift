@@ -18,11 +18,11 @@ struct NextFixtureView: View {
         VStack {
             HStack {
                 Button("<") {
-                    if let matchDetails = matches["matches"] as? [[String: Any]] {   // optional type casting
-                        print(matchDetails[0])
-                    } else {
-                        print("key doesn't exist :( or casting failed")
-                    }
+//                    if let matchDetails = matches["matches"] as? [[String: Any]] {   // optional type casting
+//                        print(matchDetails[0])
+//                    } else {
+//                        print("key doesn't exist :( or casting failed")
+//                    }
                 }
                 
                 VStack {

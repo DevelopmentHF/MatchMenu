@@ -54,11 +54,10 @@ struct PickerView: View {
         }
         .onChange(of: selectedTeam) { oldValue, newValue in
             saveSelectedTeam(selectedTeam: newValue)
-            readJSONFromFile()
         }
         .onAppear() {
-            readJSONFromFile()
             loadSelectedTeam()
+            fetchData()
         }
     }
     
@@ -75,27 +74,56 @@ struct PickerView: View {
         }
     }
     
-    func readJSONFromFile() {
-        // Get the file URL for the JSON file in your app bundle
-        if let fileURL = Bundle.main.url(forResource: "\(selectedTeam)", withExtension: "json") {
-            do {
-                // Read the JSON data from the file
-                let data = try Data(contentsOf: fileURL)
-                
-                // Parse the JSON data
-                if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                    // Now 'json' is a dictionary containing your JSON data
-                    matches = json
+    func fetchData() {
+        let headers = [
+            "X-RapidAPI-Key": "6b815b7a96mshb5a3eead469d603p1ea2d6jsnbb3356f397f4",
+            "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com"
+        ]
 
-                } else {
-                    print("Failed to parse JSON")
+        let request = NSMutableURLRequest(url: NSURL(string: "https://api-football-v1.p.rapidapi.com/v3/fixtures?league=39&season=2023")! as URL,
+                                          cachePolicy: .useProtocolCachePolicy,
+                                          timeoutInterval: 10.0)
+        request.httpMethod = "GET"
+        request.allHTTPHeaderFields = headers
+
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+            if let error = error {
+                print(error)
+            } else {
+                if let httpResponse = response as? HTTPURLResponse {
+                    print(httpResponse)
+                    
+                    if let responseData = data {
+                        do {
+                            // Assuming the data is in JSON format, you can use JSONSerialization to parse it
+                            let json = try JSONSerialization.jsonObject(with: responseData, options: [])
+                            
+                            // test accessing some of the json data -> its in a slightly wack format
+//                            if let jsonDict = json as? [String: Any],
+//                                   let responseArray = jsonDict["response"] as? [[String: Any]],
+//                                   let firstFixture = responseArray.first,
+//                                   let fixtureInfo = firstFixture["fixture"] as? [String: Any],
+//                                   let refereeName = fixtureInfo["referee"] as? String {
+//                                   
+//                                    print("Referee Name: \(refereeName)")
+//                                }
+                            
+                            // convert the json into a variable other views can access
+                            if let jsonDict = json as? [String: Any] {
+                                matches = jsonDict
+                            } else {
+                                print("failed to convert serialised json into a variable")
+                            }
+                        } catch {
+                            print("Error parsing JSON: \(error)")
+                        }
+                    }
                 }
-            } catch {
-                print("Error reading JSON file: \(error.localizedDescription)")
             }
-        } else {
-            print("JSON file not found in the app bundle")
-        }
+        })
+
+        dataTask.resume()
     }
 }
 

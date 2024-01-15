@@ -16,10 +16,6 @@
 		3FAC8B192B538716000D00A4 /* MatchMenuUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC8B182B538716000D00A4 /* MatchMenuUITestsLaunchTests.swift */; };
 		3FAC8B262B53891E000D00A4 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC8B252B53891E000D00A4 /* PickerView.swift */; };
 		3FAC8B282B53AAD5000D00A4 /* NextFixtureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC8B272B53AAD5000D00A4 /* NextFixtureView.swift */; };
-		3FAC8B2A2B53C0FD000D00A4 /* PL_2023-24_Fixture.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FAC8B292B53C0FD000D00A4 /* PL_2023-24_Fixture.json */; };
-		3FAC8B2C2B54DD7E000D00A4 /* ManchesterUnited.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FAC8B2B2B54DD7D000D00A4 /* ManchesterUnited.json */; };
-		3FAC8B2E2B54DEEF000D00A4 /* Chelsea.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FAC8B2D2B54DEEF000D00A4 /* Chelsea.json */; };
-		3FAC8B302B54E08A000D00A4 /* Burnley.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FAC8B2F2B54E08A000D00A4 /* Burnley.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,10 +49,6 @@
 		3FAC8B182B538716000D00A4 /* MatchMenuUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchMenuUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3FAC8B252B53891E000D00A4 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 		3FAC8B272B53AAD5000D00A4 /* NextFixtureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextFixtureView.swift; sourceTree = "<group>"; };
-		3FAC8B292B53C0FD000D00A4 /* PL_2023-24_Fixture.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "PL_2023-24_Fixture.json"; path = "MatchMenu/PL_2023-24_Fixture.json"; sourceTree = "<group>"; };
-		3FAC8B2B2B54DD7D000D00A4 /* ManchesterUnited.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = ManchesterUnited.json; path = MatchMenu/ManchesterUnited.json; sourceTree = "<group>"; };
-		3FAC8B2D2B54DEEF000D00A4 /* Chelsea.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = Chelsea.json; path = MatchMenu/Chelsea.json; sourceTree = "<group>"; };
-		3FAC8B2F2B54E08A000D00A4 /* Burnley.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = Burnley.json; path = MatchMenu/Burnley.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,10 +79,6 @@
 		3FAC8AEE2B538715000D00A4 = {
 			isa = PBXGroup;
 			children = (
-				3FAC8B2F2B54E08A000D00A4 /* Burnley.json */,
-				3FAC8B2D2B54DEEF000D00A4 /* Chelsea.json */,
-				3FAC8B2B2B54DD7D000D00A4 /* ManchesterUnited.json */,
-				3FAC8B292B53C0FD000D00A4 /* PL_2023-24_Fixture.json */,
 				3FAC8AF92B538715000D00A4 /* MatchMenu */,
 				3FAC8B0B2B538716000D00A4 /* MatchMenuTests */,
 				3FAC8B152B538716000D00A4 /* MatchMenuUITests */,
@@ -253,10 +241,6 @@
 			files = (
 				3FAC8B022B538716000D00A4 /* Preview Assets.xcassets in Resources */,
 				3FAC8AFF2B538716000D00A4 /* Assets.xcassets in Resources */,
-				3FAC8B2A2B53C0FD000D00A4 /* PL_2023-24_Fixture.json in Resources */,
-				3FAC8B2C2B54DD7E000D00A4 /* ManchesterUnited.json in Resources */,
-				3FAC8B2E2B54DEEF000D00A4 /* Chelsea.json in Resources */,
-				3FAC8B302B54E08A000D00A4 /* Burnley.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
