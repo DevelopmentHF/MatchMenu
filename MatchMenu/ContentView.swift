@@ -28,6 +28,7 @@ struct ContentView: View {
                 }
                 .keyboardShortcut("q")
                 .buttonStyle(PlainButtonStyle())
+                .help("Quit")
                 
                 Spacer()
                 
@@ -36,6 +37,7 @@ struct ContentView: View {
                 }, label: {
                     Image(systemName: "eye")
                 }).buttonStyle(PlainButtonStyle())
+                    .help("Hide spoilers")
                 
             }
             
