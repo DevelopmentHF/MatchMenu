@@ -26,7 +26,7 @@ struct NextFixtureView: View {
             FixtureView(team1: "Burnley", team2: "Fulham")
             FixtureView(team1: "West Bromwich Albion", team2: "Sheffield United")
         }
-        Button("Calculate matchday") {
+        Button("Debug") {
             calculateMatchday()
         }
     }
@@ -98,8 +98,21 @@ struct NextFixtureView: View {
                         curInt = roundNumber
                     }
                 }
+                
+                // check if we are in a new matchday period
                 if (matchdayInteger != curInt) {
-                    print("mismatch")
+                    // we have progressed from matchday X, to matchday X+1
+                    // let endDateOfMatchday = finddateinjson
+                    
+                    // new matchday
+                    matchdayInteger = curInt
+                    
+                    // thus, this must be the first fixture of the new matchday,
+                    // which means we can use its date as a lower bound, or 'start'
+                    // let startDateOfMatchday =finddateinjson
+                    
+                    // then add that as dictioanry to matchdays array
+                    
                 }
             }
         }
