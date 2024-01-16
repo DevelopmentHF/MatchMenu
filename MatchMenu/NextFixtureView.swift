@@ -103,6 +103,10 @@ struct NextFixtureView: View {
                 if (matchdayInteger != curInt) {
                     // we have progressed from matchday X, to matchday X+1
                     // let endDateOfMatchday = finddateinjson
+                    if let fixtureInfo = fixture["fixture"] as? [String: Any],
+                       let fixtureDate = fixtureInfo["date"] as? String {
+                        print("fixture date = \(fixtureDate)")
+                    }
                     
                     // new matchday
                     matchdayInteger = curInt
