@@ -17,6 +17,7 @@ struct NextFixtureView: View {
     
     var body: some View {
         VStack {
+            // TODO: SORT THIS BY EARLIEST GAME FIRST
             ForEach(fixtures, id: \.self) { fixture in
                 FixtureView(team1: fixture["home"] ?? "", team2: fixture["away"] ?? "", date: fixture["date"] ?? "")
             }

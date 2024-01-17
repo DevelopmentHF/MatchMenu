@@ -59,11 +59,8 @@ struct MatchdayView: View {
             
             Spacer()
             
-            Text("Matchday \(matchday)") // placeholder
+            Text("Matchday \(matchday)")
                 .font(.headline)
-                .onAppear() {
-                     //fetchData() // reinsert this when you need the API -> dont want to waste calls
-                }
             
             Spacer()
             
