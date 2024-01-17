@@ -18,7 +18,7 @@ struct NextFixtureView: View {
     var body: some View {
         VStack {
             ForEach(fixtures, id: \.self) { fixture in
-                            FixtureView(team1: fixture["home"] ?? "", team2: fixture["away"] ?? "")
+                FixtureView(team1: fixture["home"] ?? "", team2: fixture["away"] ?? "", date: fixture["date"] ?? "")
             }
         }
         .onChange(of: matchday) { _, _ in
@@ -45,12 +45,14 @@ struct NextFixtureView: View {
                 let awayTeam = awayInfo["name"] as? String,
                 let homeTeam = homeInfo["name"] as? String,
                 let leagueInfo = fixture["league"] as? [String: Any],
-                let round = leagueInfo["round"] as? String {
+                let round = leagueInfo["round"] as? String,
+                let fixtureInfo = fixture["fixture"] as? [String: Any],
+                let fixtureDate = fixtureInfo["date"] as? String {
                     // extract round number of current game
                     let roundNum = extractRoundNumber(roundStr: round)
                     
                     if (roundNum == matchday) {
-                        fixtures.append(["home": homeTeam, "away": awayTeam])
+                        fixtures.append(["home": homeTeam, "away": awayTeam, "date": fixtureDate])
                     }
                 }
             }
