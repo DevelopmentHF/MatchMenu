@@ -19,8 +19,10 @@ struct ContentView: View {
         VStack {
             MatchdayView(selectedTeam: $selectedTeam, matches: $matches, matchday: $matchday)
             Divider()
+                .padding([.top, .bottom], 5)
             NextFixtureView(selectedTeam: $selectedTeam, matches: $matches, matchday: $matchday)
             Divider()
+                .padding([.top, .bottom], 5)
             
             HStack {
                 Button() {
