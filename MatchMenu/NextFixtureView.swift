@@ -66,7 +66,7 @@ struct NextFixtureView: View {
         // these are in UK time
         var matchdays: [[String: Any]] = []
         fillMatchdaysArray(arr: &matchdays)
-        
+        print(matchdays)
         // convert current local time into a given Matchday `x` in UK time
 
         
@@ -103,13 +103,34 @@ struct NextFixtureView: View {
                 if (matchdayInteger != curInt) {
                     // we have progressed from matchday X, to matchday X+1
                     // let endDateOfMatchday = finddateinjson
+                    // new matchday
+                    matchdayInteger = curInt
+                    
                     if let fixtureInfo = fixture["fixture"] as? [String: Any],
                        let fixtureDate = fixtureInfo["date"] as? String {
                         print("fixture date = \(fixtureDate)")
+                        
+                        // convert this to a date we can compare with system date
+                        let dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+                        dateFormatter.dateFormat = dateFormat
+
+                        if let date = dateFormatter.date(from: fixtureDate) {
+                            let newFormat = "dd MMMM yyyy"
+                            dateFormatter.dateFormat = newFormat
+                            let formattedDate = dateFormatter.string(from: date)
+                            print("Formatted Date: \(formattedDate)")
+                            
+                            arr.append([String(matchdayInteger): formattedDate])
+                        } else {
+                            print("Failed to convert string to date.")
+                        }
+                        
                     }
                     
-                    // new matchday
-                    matchdayInteger = curInt
+                    
                     
                     // thus, this must be the first fixture of the new matchday,
                     // which means we can use its date as a lower bound, or 'start'
