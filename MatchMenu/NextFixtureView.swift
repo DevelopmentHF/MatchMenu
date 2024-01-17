@@ -44,13 +44,33 @@ struct NextFixtureView: View {
                 let awayInfo = teamsInfo["away"] as? [String: Any],
                 let homeInfo = teamsInfo["home"] as? [String: Any],
                 let awayTeam = awayInfo["name"] as? String,
-                let homeTeam = homeInfo["name"] as? String {
-                    print("Home team = \(homeTeam) AND Away team = \(awayTeam)")
+                let homeTeam = homeInfo["name"] as? String,
+                let leagueInfo = fixture["league"] as? [String: Any],
+                let round = leagueInfo["round"] as? String {
+                    // extract round number of current game
+                    let roundNum = extractRoundNumber(roundStr: round)
+                    
+                    if (roundNum == matchday) {
+                        print("Home team = \(homeTeam) AND Away team = \(awayTeam)")
+                    }
                 }
             }
         }
         
         return fixtures
+    }
+    
+    private func extractRoundNumber(roundStr: String) -> Int {
+        // Find the numeric characters at the end of the string by removing all characters
+        // not in the char set 0-9
+        let numericCharacters = roundStr.trimmingCharacters(in: CharacterSet.decimalDigits.inverted)
+
+        // Convert the numeric characters to an integer
+        if let roundNumber = Int(numericCharacters) {
+            return roundNumber
+        }
+        
+        return -1
     }
     
     private func calculateMatchday() {
@@ -137,20 +157,8 @@ struct NextFixtureView: View {
                             continue
                         }
                     }
-
-                    
-                    //print("Round: \(round)")
-
-                    // Find the numeric characters at the end of the string by removing all characters
-                    // not in the char set 0-9
-                    let numericCharacters = round.trimmingCharacters(in: CharacterSet.decimalDigits.inverted)
-
-                    // Convert the numeric characters to an integer
-                    if let roundNumber = Int(numericCharacters) {
-                        //print("Last Numeric Characters of Round: \(numericCharacters)")
-                        //print("Round Number: \(roundNumber)")
-                        curInt = roundNumber
-                    }
+            
+                    curInt = extractRoundNumber(roundStr: round)
                 }
                 
                 // check if we are in a new matchday period
