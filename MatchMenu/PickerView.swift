@@ -45,38 +45,15 @@ struct PickerView: View {
     @Binding var matches: [String: Any]
     
     var body: some View {
-//        HStack {
-//            Picker("",
-//                   selection: $selectedTeam) {
-//                ForEach(Team.allCases) { team in
-//                    Text(team.rawValue)}
-//            }
-//        }
-        Text("Matchday 21")
+        Text("Matchday 21") // placeholder
             .font(.headline)
-        .onChange(of: selectedTeam) { oldValue, newValue in
-            saveSelectedTeam(selectedTeam: newValue)
-        }
         .onAppear() {
-            loadSelectedTeam()
              fetchData() // reinsert this when you need the API -> dont want to waste calls
         }
     }
     
-    func saveSelectedTeam(selectedTeam: Team) {
-        UserDefaults.standard.set(selectedTeam.id.rawValue, forKey: "last-chosen-team")
-    }
-    
-    func loadSelectedTeam() {
-        if let teamId = UserDefaults.standard.string(forKey: "last-chosen-team"),
-           let team = Team(id: teamId) {
-            selectedTeam = team
-        } else {
-            selectedTeam = .ManchesterUnited
-        }
-    }
-    
-    func fetchData() {
+    /* Taken from RapidAPI sample query */
+    private func fetchData() {
         let headers = [
             "X-RapidAPI-Key": "6b815b7a96mshb5a3eead469d603p1ea2d6jsnbb3356f397f4",
             "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com"
