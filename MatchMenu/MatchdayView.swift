@@ -38,7 +38,7 @@ enum Team: String, CaseIterable, Identifiable {
     }
 }
 
-struct PickerView: View {
+struct MatchdayView: View {
     
     // try set it to a default? then use @AppStorage to save it?
     @Binding var selectedTeam: Team

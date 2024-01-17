@@ -17,7 +17,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            PickerView(selectedTeam: $selectedTeam, matches: $matches, matchday: $matchday)
+            MatchdayView(selectedTeam: $selectedTeam, matches: $matches, matchday: $matchday)
             Divider()
             NextFixtureView(selectedTeam: $selectedTeam, matches: $matches, matchday: $matchday)
             Divider()
@@ -42,8 +42,6 @@ struct ContentView: View {
                     .help("Hide spoilers")
                 
             }
-            
-            
         }
         .padding()
     }

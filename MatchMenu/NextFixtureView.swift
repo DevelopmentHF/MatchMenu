@@ -15,7 +15,7 @@ struct NextFixtureView: View {
     @Binding var matchday: Int
     
     var body: some View {
-        ScrollView {
+        VStack {
             FixtureView(team1: "Manchester United", team2: "Manchester City")
             FixtureView(team1: "Liverpool", team2: "Everton")
             FixtureView(team1: "Chelsea", team2: "Arsenal")
@@ -29,7 +29,28 @@ struct NextFixtureView: View {
         }
         Button("Debug") {
             calculateMatchday()
+            findFixtures(matchdayNumber: matchday)
         }
+    }
+    
+    private func findFixtures(matchdayNumber: Int) -> [[String: Any]] {
+        // init a list to store relevant fixtures
+        var fixtures: [[String: Any]] = []
+        
+        // check which fixtures have this `matchdayNumber`
+        if let responseArr = matches["response"] as? [[String: Any]] {
+            for fixture in responseArr {
+                if let teamsInfo = fixture["teams"] as? [String: Any],
+                let awayInfo = teamsInfo["away"] as? [String: Any],
+                let homeInfo = teamsInfo["home"] as? [String: Any],
+                let awayTeam = awayInfo["name"] as? String,
+                let homeTeam = homeInfo["name"] as? String {
+                    print("Home team = \(homeTeam) AND Away team = \(awayTeam)")
+                }
+            }
+        }
+        
+        return fixtures
     }
     
     private func calculateMatchday() {
@@ -50,7 +71,7 @@ struct NextFixtureView: View {
         // find out when each matchday begins
         var matchdays: [[String: Any]] = []
         fillMatchdaysArray(arr: &matchdays)
-        print(matchdays)
+        //print(matchdays)
         
         // convert current local time into a given Matchday `x` in UK time
         matchday = findOutCurrentMatchday(arr: matchdays, currentUTCDate: formattedDate)
@@ -102,7 +123,7 @@ struct NextFixtureView: View {
             dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
             
             for fixture in responseArray {
-                print(fixture)
+                //print(fixture)
                 var curInt = 0
                 
                 if let leagueInfo = fixture["league"] as? [String: Any],
