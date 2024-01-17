@@ -12,6 +12,7 @@ struct NextFixtureView: View {
     
     @Binding var selectedTeam: Team
     @Binding var matches: [String: Any]
+    @Binding var matchday: Int
     
     var body: some View {
         ScrollView {
@@ -52,7 +53,7 @@ struct NextFixtureView: View {
         print(matchdays)
         
         // convert current local time into a given Matchday `x` in UK time
-        let currentMatchday: Int = findOutCurrentMatchday(arr: matchdays, currentUTCDate: formattedDate)
+        matchday = findOutCurrentMatchday(arr: matchdays, currentUTCDate: formattedDate)
 
         
         // go thru all matches in json which also fall into Matchday `x`
@@ -77,7 +78,7 @@ struct NextFixtureView: View {
                     
                     if (formattedCurrentUTCDate <= unwrappedDate) {
                         print("current matchday = \(matchdayNumber)")
-                        break
+                        return matchdayNumber
                     }
                 }
 
@@ -132,6 +133,9 @@ struct NextFixtureView: View {
                 }
                 
                 // check if we are in a new matchday period
+                // TODO: Bruh the first matchday in the API call isnt necessarily the first one scheduled.
+                // TODO: thus, change to find the minimum date for a given matchday. good enough for now to create
+                // a ui but *needs* to be fixed
                 if (matchdayInteger != curInt) {
                     // we have progressed from matchday X, to matchday X+1
                     // let endDateOfMatchday = finddateinjson

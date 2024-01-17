@@ -13,11 +13,13 @@ struct ContentView: View {
     
     @State var matches: [String: Any] = [:]
     
+    @State var matchday: Int = 0 // 0 acts a default value
+    
     var body: some View {
         VStack {
-            PickerView(selectedTeam: $selectedTeam, matches: $matches)
+            PickerView(selectedTeam: $selectedTeam, matches: $matches, matchday: $matchday)
             Divider()
-            NextFixtureView(selectedTeam: $selectedTeam, matches: $matches)
+            NextFixtureView(selectedTeam: $selectedTeam, matches: $matches, matchday: $matchday)
             Divider()
             
             HStack {

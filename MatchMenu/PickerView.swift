@@ -43,9 +43,10 @@ struct PickerView: View {
     // try set it to a default? then use @AppStorage to save it?
     @Binding var selectedTeam: Team
     @Binding var matches: [String: Any]
+    @Binding var matchday: Int
     
     var body: some View {
-        Text("Matchday 21") // placeholder
+        Text("Matchday \(matchday)") // placeholder
             .font(.headline)
             .onAppear() {
                  fetchData() // reinsert this when you need the API -> dont want to waste calls
