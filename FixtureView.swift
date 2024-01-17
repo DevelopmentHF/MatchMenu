@@ -37,19 +37,22 @@ struct FixtureView: View {
     }
     
     private func UtcToLocalTime(utcDate: String) -> String {
+            
+        // define input conditions of the date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        
+        // convert
+        if let formattedDate = dateFormatter.date(from: utcDate) {
+            // define output condtions of the date
+            let localDateFormatter = DateFormatter()
+            localDateFormatter.dateFormat = "dd MMMM yyyy HH:mm"
+            localDateFormatter.timeZone = TimeZone.current
 
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-            dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-
-            if let formattedDate = dateFormatter.date(from: utcDate) {
-                let localDateFormatter = DateFormatter()
-                localDateFormatter.dateFormat = "dd MMMM yyyy HH:mm"
-                localDateFormatter.timeZone = TimeZone.current
-
-                return localDateFormatter.string(from: formattedDate)
-            }
-
-            return "Oops! We can't display the date right now."
+            return localDateFormatter.string(from: formattedDate)
         }
+
+        return "Oops! We can't display match information right now."
+    }
 }

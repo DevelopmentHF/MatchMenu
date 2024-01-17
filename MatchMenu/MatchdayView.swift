@@ -51,16 +51,18 @@ struct MatchdayView: View {
             Button("<") {
                 matchday -= 1
             }
+            .keyboardShortcut(.leftArrow)
             
             Text("Matchday \(matchday)") // placeholder
                 .font(.headline)
                 .onAppear() {
-                     fetchData() // reinsert this when you need the API -> dont want to waste calls
+                     //fetchData() // reinsert this when you need the API -> dont want to waste calls
                 }
             
             Button(">") {
                 matchday += 1
             }
+            .keyboardShortcut(.rightArrow)
         }
         
         
@@ -68,49 +70,5 @@ struct MatchdayView: View {
             ProgressView()
                   .progressViewStyle(CircularProgressViewStyle(tint: .blue))
         }
-    }
-    
-    /* Taken from RapidAPI sample query */
-    private func fetchData() {
-        let headers = [
-            "X-RapidAPI-Key": "6b815b7a96mshb5a3eead469d603p1ea2d6jsnbb3356f397f4",
-            "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com"
-        ]
-
-        let request = NSMutableURLRequest(url: NSURL(string: "https://api-football-v1.p.rapidapi.com/v3/fixtures?league=39&season=2023")! as URL,
-                                          cachePolicy: .useProtocolCachePolicy,
-                                          timeoutInterval: 10.0)
-        request.httpMethod = "GET"
-        request.allHTTPHeaderFields = headers
-
-        let session = URLSession.shared
-        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-            if let error = error {
-                print(error)
-            } else {
-                if let httpResponse = response as? HTTPURLResponse {
-                    print(httpResponse)
-                    
-                    if let responseData = data {
-                        do {
-                            // Assuming the data is in JSON format, you can use JSONSerialization to parse it
-                            let json = try JSONSerialization.jsonObject(with: responseData, options: [])
-                            
-                            // convert the json into a variable other views can access
-                            if let jsonDict = json as? [String: Any] {
-                                matches = jsonDict
-                                //print(matches)
-                            } else {
-                                print("failed to convert serialised json into a variable")
-                            }
-                        } catch {
-                            print("Error parsing JSON: \(error)")
-                        }
-                    }
-                }
-            }
-        })
-
-        dataTask.resume()
     }
 }
