@@ -47,8 +47,13 @@ struct PickerView: View {
     var body: some View {
         Text("Matchday 21") // placeholder
             .font(.headline)
-        .onAppear() {
-             fetchData() // reinsert this when you need the API -> dont want to waste calls
+            .onAppear() {
+                 fetchData() // reinsert this when you need the API -> dont want to waste calls
+            }
+        
+        if (matches.isEmpty) {
+            ProgressView()
+                  .progressViewStyle(CircularProgressViewStyle(tint: .blue))
         }
     }
     

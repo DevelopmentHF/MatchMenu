@@ -52,16 +52,38 @@ struct NextFixtureView: View {
         print(matchdays)
         
         // convert current local time into a given Matchday `x` in UK time
-        let currentMatchday: Int = findOutCurrentMatchday(arr: matchdays)
+        let currentMatchday: Int = findOutCurrentMatchday(arr: matchdays, currentUTCDate: formattedDate)
 
         
         // go thru all matches in json which also fall into Matchday `x`
         
     }
     
-    private func findOutCurrentMatchday(arr: [[String: Any]]) -> Int {
+    private func findOutCurrentMatchday(arr: [[String: Any]], currentUTCDate: String) -> Int {
+        // set up date formatter
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMMM yyyy"
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        
+        // convert current utc date (machine time) back into a date object so we can compare
+        let formattedCurrentUTCDate = dateFormatter.date(from: currentUTCDate)!
+        
+        var matchdayNumber = 1
         for matchdayStartingDict in arr {
+
+            // do the same conversion as above but for each of the starting matchday dates
+            if let matchdayDateStr = matchdayStartingDict[String(matchdayNumber)] as? String {
+                if let unwrappedDate = dateFormatter.date(from: matchdayDateStr) {
+                    
+                    if (formattedCurrentUTCDate <= unwrappedDate) {
+                        print("current matchday = \(matchdayNumber)")
+                        break
+                    }
+                }
+
+            }
             
+            matchdayNumber += 1
         }
         return 0;
     }
@@ -79,11 +101,22 @@ struct NextFixtureView: View {
             dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
             
             for fixture in responseArray {
-                //print(fixture)
+                print(fixture)
                 var curInt = 0
                 
                 if let leagueInfo = fixture["league"] as? [String: Any],
                    let round = leagueInfo["round"] as? String {
+                    
+                    // checking for postponements, we don't want this to impact our matchday starting time
+                    if let fixtureInfo = fixture["fixture"] as? [String: Any],
+                       let statusInfo = fixtureInfo["status"] as? [String: Any],
+                       let shortStatus = statusInfo["short"] as? String {
+                        if shortStatus == "TBD" {
+                            continue
+                        }
+                    }
+
+                    
                     //print("Round: \(round)")
 
                     // Find the numeric characters at the end of the string by removing all characters
