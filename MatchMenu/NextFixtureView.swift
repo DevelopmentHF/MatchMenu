@@ -21,6 +21,10 @@ struct NextFixtureView: View {
                             FixtureView(team1: fixture["home"] ?? "", team2: fixture["away"] ?? "")
             }
         }
+        .onChange(of: matchday) { _, _ in
+            fixtures = findFixtures(matchdayNumber: matchday)
+        }
+            
         Button("Debug") {
             calculateMatchday()
             fixtures = findFixtures(matchdayNumber: matchday)

@@ -46,11 +46,23 @@ struct MatchdayView: View {
     @Binding var matchday: Int
     
     var body: some View {
-        Text("Matchday \(matchday)") // placeholder
-            .font(.headline)
-            .onAppear() {
-                 fetchData() // reinsert this when you need the API -> dont want to waste calls
+        
+        HStack {
+            Button("<") {
+                matchday -= 1
             }
+            
+            Text("Matchday \(matchday)") // placeholder
+                .font(.headline)
+                .onAppear() {
+                     fetchData() // reinsert this when you need the API -> dont want to waste calls
+                }
+            
+            Button(">") {
+                matchday += 1
+            }
+        }
+        
         
         if (matches.isEmpty) {
             ProgressView()
