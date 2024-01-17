@@ -18,7 +18,7 @@ struct FixtureView: View {
         HStack(alignment: .center, spacing: 8) {
             Spacer()
 //            Text("\(team1)")
-            Image("Manchester United")
+            Image(team1)
                 .resizable()
                 .frame(width: 24.57, height: 32.0)
             Spacer()
@@ -27,7 +27,7 @@ struct FixtureView: View {
                 .foregroundStyle(.secondary)
             Spacer()
 //            Text("\(team2)")
-            Image("Manchester City")
+            Image(team2)
                 .resizable()
                 .frame(width: 24.57, height: 32.0)
             Spacer()

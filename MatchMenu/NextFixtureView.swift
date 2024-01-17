@@ -13,29 +13,24 @@ struct NextFixtureView: View {
     @Binding var selectedTeam: Team
     @Binding var matches: [String: Any]
     @Binding var matchday: Int
+    @State var fixtures: [[String: String]] = []
     
     var body: some View {
         VStack {
-            FixtureView(team1: "Manchester United", team2: "Manchester City")
-            FixtureView(team1: "Liverpool", team2: "Everton")
-            FixtureView(team1: "Chelsea", team2: "Arsenal")
-            FixtureView(team1: "Tottenham Hotspur", team2: "West Ham United")
-            FixtureView(team1: "Leicester City", team2: "Southampton")
-            FixtureView(team1: "Aston Villa", team2: "Wolverhampton Wanderers")
-            FixtureView(team1: "Leeds United", team2: "Crystal Palace")
-            FixtureView(team1: "Newcastle United", team2: "Brighton & Hove Albion")
-            FixtureView(team1: "Burnley", team2: "Fulham")
-            FixtureView(team1: "West Bromwich Albion", team2: "Sheffield United")
+            ForEach(fixtures, id: \.self) { fixture in
+                            FixtureView(team1: fixture["home"] ?? "", team2: fixture["away"] ?? "")
+            }
         }
         Button("Debug") {
             calculateMatchday()
-            findFixtures(matchdayNumber: matchday)
+            fixtures = findFixtures(matchdayNumber: matchday)
+            print(fixtures)
         }
     }
     
-    private func findFixtures(matchdayNumber: Int) -> [[String: Any]] {
+    private func findFixtures(matchdayNumber: Int) -> [[String: String]] {
         // init a list to store relevant fixtures
-        var fixtures: [[String: Any]] = []
+        var fixtures: [[String: String]] = []
         
         // check which fixtures have this `matchdayNumber`
         if let responseArr = matches["response"] as? [[String: Any]] {
@@ -51,7 +46,7 @@ struct NextFixtureView: View {
                     let roundNum = extractRoundNumber(roundStr: round)
                     
                     if (roundNum == matchday) {
-                        print("Home team = \(homeTeam) AND Away team = \(awayTeam)")
+                        fixtures.append(["home": homeTeam, "away": awayTeam])
                     }
                 }
             }

@@ -21,14 +21,14 @@ enum Team: String, CaseIterable, Identifiable {
           CrystalPalace = "Crystal Palace FC",
           Everton = "Everton FC",
           Fulham = "Fulham FC",
-          LutonTown = "Luton Town FC",
+          Luton = "Luton Town FC",
           ManchesterCity = "Manchester City",
           NewcastleUnited = "Newcastle United",
           NottinghamForest = "Nottingham Forest",
-          SheffieldUnited = "Sheffield United",
+          SheffieldUtd = "Sheffield United",
           TottenhamHotspur = "Tottenham Hotspur",
-          WestHamUnited = "West Ham United",
-          WolverhamptonWanderers = "Wolverhampton Wanderers"
+          WestHam = "West Ham United",
+          Wolves = "Wolverhampton Wanderers"
     
     
     var id: Self { self }
@@ -84,16 +84,6 @@ struct MatchdayView: View {
                             // Assuming the data is in JSON format, you can use JSONSerialization to parse it
                             let json = try JSONSerialization.jsonObject(with: responseData, options: [])
                             
-                            // test accessing some of the json data -> its in a slightly wack format
-//                            if let jsonDict = json as? [String: Any],
-//                                   let responseArray = jsonDict["response"] as? [[String: Any]],
-//                                   let firstFixture = responseArray.first,
-//                                   let fixtureInfo = firstFixture["fixture"] as? [String: Any],
-//                                   let refereeName = fixtureInfo["referee"] as? String {
-//                                   
-//                                    print("Referee Name: \(refereeName)")
-//                                }
-                            
                             // convert the json into a variable other views can access
                             if let jsonDict = json as? [String: Any] {
                                 matches = jsonDict
@@ -112,9 +102,3 @@ struct MatchdayView: View {
         dataTask.resume()
     }
 }
-
-
-
-//#Preview {
-//    PickerView(selectedTeam: )
-//}
