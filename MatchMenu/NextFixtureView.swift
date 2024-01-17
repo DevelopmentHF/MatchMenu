@@ -79,6 +79,13 @@ struct NextFixtureView: View {
 
         if let responseArray = matches["response"] as? [[String: Any]] {
             var matchdayInteger = 0
+            
+            // convert this to a date we can compare with system date
+            let dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+
+            let dateFormatter = DateFormatter()
+            dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+            
             for fixture in responseArray {
                 print(fixture)
                 var curInt = 0
@@ -110,11 +117,6 @@ struct NextFixtureView: View {
                        let fixtureDate = fixtureInfo["date"] as? String {
                         print("fixture date = \(fixtureDate)")
                         
-                        // convert this to a date we can compare with system date
-                        let dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-
-                        let dateFormatter = DateFormatter()
-                        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
                         dateFormatter.dateFormat = dateFormat
 
                         if let date = dateFormatter.date(from: fixtureDate) {
