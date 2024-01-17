@@ -48,10 +48,16 @@ struct MatchdayView: View {
     var body: some View {
         
         HStack {
-            Button("<") {
+            Button() {
                 matchday -= 1
+            } label: {
+                Image(systemName: "arrow.left")
             }
             .keyboardShortcut(.leftArrow)
+            .buttonStyle(PlainButtonStyle())
+            .help("View previous matchday")
+            
+            Spacer()
             
             Text("Matchday \(matchday)") // placeholder
                 .font(.headline)
@@ -59,10 +65,16 @@ struct MatchdayView: View {
                      //fetchData() // reinsert this when you need the API -> dont want to waste calls
                 }
             
-            Button(">") {
+            Spacer()
+            
+            Button() {
                 matchday += 1
+            } label : {
+                Image(systemName: "arrow.right")
             }
             .keyboardShortcut(.rightArrow)
+            .buttonStyle(PlainButtonStyle())
+            .help("View next matchday")
         }
         
         
