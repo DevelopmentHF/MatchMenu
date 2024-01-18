@@ -49,7 +49,9 @@ struct MatchdayView: View {
         
         HStack {
             Button() {
-                matchday -= 1
+                if (matchday < 1) {
+                    matchday -= 1
+                }
             } label: {
                 Image(systemName: "arrow.left")
             }
@@ -65,7 +67,9 @@ struct MatchdayView: View {
             Spacer()
             
             Button() {
-                matchday += 1
+                if (matchday < 38) {
+                    matchday += 1
+                }
             } label : {
                 Image(systemName: "arrow.right")
             }
