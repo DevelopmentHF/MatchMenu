@@ -60,8 +60,31 @@ struct NextFixtureView: View {
             }
         }
         
-        return fixtures
+        // sort fixtures before returning
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+
+        // Convert the date strings to Date objects
+        let fixturesWithDates: [(Date, [String: String])] = fixtures.compactMap { fixture in
+            guard let dateString = fixture["date"],
+                  let date = dateFormatter.date(from: dateString) else {
+                return nil
+            }
+            return (date, fixture)
+        }
+
+        // Sort the array based on the Date objects
+        let sortedFixtures = fixturesWithDates.sorted { $0.0 < $1.0 }
+
+        // Extract the sorted fixtures without the Date objects
+        let resultArray: [[String: String]] = sortedFixtures.map { $0.1 }
+
+        print(resultArray)
+        
+        return resultArray
     }
+    
+    
     
     private func extractRoundNumber(roundStr: String) -> Int {
         // Find the numeric characters at the end of the string by removing all characters
