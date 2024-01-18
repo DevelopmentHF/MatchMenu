@@ -144,7 +144,13 @@ struct NextFixtureView: View {
         // convert current local time into a given Matchday `x` in UK time
         matchday = findOutCurrentMatchday(arr: matchdays, currentUTCDate: formattedDate)
 
-        // go thru all matches in json which also fall into Matchday `x`
+        if let test = Bundle.main.infoDictionary?["Variable"] as? String {
+            print("test = \(test)")
+        }
+        
+        if let configtest = Bundle.main.infoDictionary?["Configtest"] as? String {
+            print("configtest = \(configtest)")
+        }
         
     }
     
@@ -179,8 +185,15 @@ struct NextFixtureView: View {
     
     /* Taken from RapidAPI sample query */
     private func fetchData(completion: @escaping () -> Void) {
+        
+        var API_KEY = "6b815b7a96mshb5a3eead469d603p1ea2d6jsnbb3356f397f4"
+//        if let api = Bundle.main.infoDictionary?["Apikey"] as? String {
+//            print("key = \(api)")
+//            API_KEY = api
+//        }
+        
         let headers = [
-            "X-RapidAPI-Key": "6b815b7a96mshb5a3eead469d603p1ea2d6jsnbb3356f397f4",
+            "X-RapidAPI-Key": API_KEY,
             "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com"
         ]
 

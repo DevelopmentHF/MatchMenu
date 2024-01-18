@@ -1,0 +1,12 @@
+//
+//  Config.xcconfig
+//  MatchMenu
+//
+//  Created by Henry Fielding on 18/1/2024.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+Apikey = 6b815b7a96mshb5a3eead469d603p1ea2d6jsnbb3356f397f4
+CONFIG_TEST = 1234
