@@ -186,11 +186,10 @@ struct NextFixtureView: View {
     /* Taken from RapidAPI sample query */
     private func fetchData(completion: @escaping () -> Void) {
         
-        var API_KEY = "6b815b7a96mshb5a3eead469d603p1ea2d6jsnbb3356f397f4"
-//        if let api = Bundle.main.infoDictionary?["Apikey"] as? String {
-//            print("key = \(api)")
-//            API_KEY = api
-//        }
+        var API_KEY = ""
+        if let api = Bundle.main.infoDictionary?["Apikey"] as? String {
+            API_KEY = api
+        }
         
         let headers = [
             "X-RapidAPI-Key": API_KEY,
