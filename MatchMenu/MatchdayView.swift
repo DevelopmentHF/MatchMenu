@@ -49,7 +49,7 @@ struct MatchdayView: View {
         
         HStack {
             Button() {
-                if (matchday < 1) {
+                if (matchday > 1) {
                     matchday -= 1
                 }
             } label: {

@@ -17,9 +17,8 @@ struct NextFixtureView: View {
     
     var body: some View {
         VStack {
-            // TODO: SORT THIS BY EARLIEST GAME FIRST
             ForEach(fixtures, id: \.self) { fixture in
-                FixtureView(team1: fixture["home"] ?? "", team2: fixture["away"] ?? "", date: fixture["date"] ?? "")
+                FixtureView(team1: fixture["home"] ?? "", team2: fixture["away"] ?? "", date: fixture["date"] ?? "", status: fixture["status"] ?? "", homeScore: fixture["homeScore"] ?? "", awayScore: fixture["awayScore"] ?? "")
             }
         }
         .onChange(of: matchday) { _, _ in
@@ -31,6 +30,10 @@ struct NextFixtureView: View {
                     fixtures = findFixtures(matchdayNumber: matchday)
                     print(fixtures)
             }
+        }
+        .onDisappear() {
+            // with our timer, if the window is open, call the API once every minute(?tbd)
+            // change the timer to be like every hour if the app is open but window hidden
         }
     }
     
@@ -49,12 +52,19 @@ struct NextFixtureView: View {
                 let leagueInfo = fixture["league"] as? [String: Any],
                 let round = leagueInfo["round"] as? String,
                 let fixtureInfo = fixture["fixture"] as? [String: Any],
-                let fixtureDate = fixtureInfo["date"] as? String {
+                let fixtureDate = fixtureInfo["date"] as? String,
+                let statusInfo = fixtureInfo["status"] as? [String: Any],
+                let status = statusInfo["short"] as? String,
+                let scoreInfo = fixture["score"] as? [String: Any],
+                let fulltimeInfo = scoreInfo["fulltime"] as? [String: Any],
+                let homeScore = fulltimeInfo["home"] as? String,
+                let awayScore = fulltimeInfo["away"] as? String {
                     // extract round number of current game
                     let roundNum = extractRoundNumber(roundStr: round)
                     
                     if (roundNum == matchday) {
-                        fixtures.append(["home": homeTeam, "away": awayTeam, "date": fixtureDate])
+                        fixtures.append(["home": homeTeam, "away": awayTeam, "date": fixtureDate, "status": status,
+                                         "homeScore": homeScore, "awayScore": awayScore])
                     }
                 }
             }
@@ -63,7 +73,8 @@ struct NextFixtureView: View {
         // sort fixtures before returning
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-
+        
+        /* borrowed from chatgpt */
         // Convert the date strings to Date objects
         let fixturesWithDates: [(Date, [String: String])] = fixtures.compactMap { fixture in
             guard let dateString = fixture["date"],
@@ -74,7 +85,7 @@ struct NextFixtureView: View {
         }
 
         // Sort the array based on the Date objects
-        let sortedFixtures = fixturesWithDates.sorted { $0.0 < $1.0 }
+        let sortedFixtures = fixturesWithDates.sorted { $0.0 < $1.0 }   // refers to the first and second parameter
 
         // Extract the sorted fixtures without the Date objects
         let resultArray: [[String: String]] = sortedFixtures.map { $0.1 }

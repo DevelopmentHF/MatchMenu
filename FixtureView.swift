@@ -14,6 +14,9 @@ struct FixtureView: View {
     @State var team1: String
     @State var team2: String
     @State var date: String
+    @State var status: String
+    @State var homeScore: String
+    @State var awayScore: String
 
     var body: some View {
         HStack(alignment: .center, spacing: 8) {
@@ -23,10 +26,34 @@ struct FixtureView: View {
                 .resizable()
                 .frame(width: 24.57, height: 32.0)
             Spacer()
-            Text(UtcToLocalTime(utcDate: date))
-                .font(.caption)
-                .foregroundStyle(.secondary)
-                .frame(minWidth: 100)   // this is so the columns still align when there a diff length strings.
+            
+            if (status == "FT" || status == "1H" || status == "2H") {
+                
+                Text(homeScore)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                
+                Spacer()
+                
+                Text(status)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .frame(minWidth: 100) // this is so the columns still align when there a diff length strings.
+                
+                Spacer()
+                
+                Text(awayScore)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                
+                
+            } else {
+                Text(UtcToLocalTime(utcDate: date))
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .frame(minWidth: 100)   // this is so the columns still align when there a diff length strings.
+            }
+            
             Spacer()
 //            Text("\(team2)")
             Image(team2)
