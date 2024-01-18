@@ -55,17 +55,28 @@ struct NextFixtureView: View {
                 let fixtureDate = fixtureInfo["date"] as? String,
                 let statusInfo = fixtureInfo["status"] as? [String: Any],
                 let status = statusInfo["short"] as? String,
-                let scoreInfo = fixture["score"] as? [String: Any],
-                let fulltimeInfo = scoreInfo["fulltime"] as? [String: Any],
-                let homeScore = fulltimeInfo["home"] as? String,
-                let awayScore = fulltimeInfo["away"] as? String {
-                    // extract round number of current game
-                    let roundNum = extractRoundNumber(roundStr: round)
+                let scoreInfo = fixture["goals"] as? [String: Any] {
                     
-                    if (roundNum == matchday) {
-                        fixtures.append(["home": homeTeam, "away": awayTeam, "date": fixtureDate, "status": status,
-                                         "homeScore": homeScore, "awayScore": awayScore])
+                    if let homeScore = scoreInfo["home"] as? Int,
+                       let awayScore = scoreInfo["away"] as? Int {
+                        // extract round number of current game
+                        let roundNum = extractRoundNumber(roundStr: round)
+                        
+                        if (roundNum == matchday) {
+                            fixtures.append(["home": homeTeam, "away": awayTeam, "date": fixtureDate, "status": status,
+                                             "homeScore": String(homeScore), "awayScore": String(awayScore)])
+                        }
+                    } else {
+                        // extract round number of current game
+                        let roundNum = extractRoundNumber(roundStr: round)
+                        
+                        if (roundNum == matchday) {
+                            fixtures.append(["home": homeTeam, "away": awayTeam, "date": fixtureDate, "status": status,
+                                             "homeScore": String(-1), "awayScore": String(-1)])
+                        }
                     }
+                    
+                    
                 }
             }
         }

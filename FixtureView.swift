@@ -27,32 +27,31 @@ struct FixtureView: View {
                 .frame(width: 24.57, height: 32.0)
             Spacer()
             
-            if (status == "FT" || status == "1H" || status == "2H") {
-                
-                Text(homeScore)
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                
-                Spacer()
-                
-                Text(status)
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                    .frame(minWidth: 100) // this is so the columns still align when there a diff length strings.
-                
-                Spacer()
-                
-                Text(awayScore)
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                
-                
-            } else {
-                Text(UtcToLocalTime(utcDate: date))
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                    .frame(minWidth: 100)   // this is so the columns still align when there a diff length strings.
-            }
+            HStack {
+                if (status == "FT" || status == "1H" || status == "2H") {
+                    
+                    Text(homeScore)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                    
+                    Text(status)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .frame(minWidth: 100) // this is so the columns still align when there a diff length strings.
+                    
+                    Text(awayScore)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                    
+                    
+                } else {
+                    Text(UtcToLocalTime(utcDate: date))
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .frame(minWidth: 100)   // this is so the columns still align when there a diff length strings.
+                }
+            }.frame(minWidth: 150)
+            
             
             Spacer()
 //            Text("\(team2)")
