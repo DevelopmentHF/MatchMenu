@@ -15,7 +15,17 @@ struct ContentView: View {
     
     @State var matchday: Int = 0 // 0 acts a default value
     
-    @State var isSpoilersOn: Bool = true
+    @State private var isSpoilersOn: Bool = UserDefaults.standard.bool(forKey: "isSpoilersOnKey")
+    
+    init() {
+        // Check if a value exists in UserDefaults
+        if let savedValue = UserDefaults.standard.value(forKey: "isSpoilersOnKey") as? Bool {
+            _isSpoilersOn = State(initialValue: savedValue)
+        } else {
+            // Set a default value if no value is found
+            _isSpoilersOn = State(initialValue: true)
+        }
+    }
     
     var body: some View {
         VStack {
@@ -54,6 +64,14 @@ struct ContentView: View {
             }
         }
         .padding()
+        .onAppear() {
+            // Load the saved value from UserDefaults when the view appears
+            isSpoilersOn = UserDefaults.standard.bool(forKey: "isSpoilersOnKey")
+        }
+        .onChange(of: isSpoilersOn) { _, newValue in
+            // Save the updated value to UserDefaults when it changes
+            UserDefaults.standard.set(newValue, forKey: "isSpoilersOnKey")
+        }
     }
 }
 
