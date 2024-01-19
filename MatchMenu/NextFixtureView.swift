@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Keys
 import SwiftUI
 
 struct NextFixtureView: View {
@@ -28,7 +29,6 @@ struct NextFixtureView: View {
             fetchData {
                     calculateMatchday()
                     fixtures = findFixtures(matchdayNumber: matchday)
-                    print(fixtures)
             }
         }
         .onDisappear() {
@@ -186,10 +186,8 @@ struct NextFixtureView: View {
     /* Taken from RapidAPI sample query */
     private func fetchData(completion: @escaping () -> Void) {
         
-        var API_KEY = ""
-        if let api = Bundle.main.infoDictionary?["Apikey"] as? String {
-            API_KEY = api
-        }
+        let keys = MatchMenuKeys()
+        let API_KEY = keys.rapidApiKey
         
         let headers = [
             "X-RapidAPI-Key": API_KEY,

@@ -1,0 +1,6 @@
+framework module Pods_MatchMenu_MatchMenuUITests {
+  umbrella header "Pods-MatchMenu-MatchMenuUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
