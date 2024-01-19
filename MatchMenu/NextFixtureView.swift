@@ -15,11 +15,12 @@ struct NextFixtureView: View {
     @Binding var matches: [String: Any]
     @Binding var matchday: Int
     @State var fixtures: [[String: String]] = []
+    @Binding var isSpoilersOn: Bool
     
     var body: some View {
         VStack {
             ForEach(fixtures, id: \.self) { fixture in
-                FixtureView(team1: fixture["home"] ?? "", team2: fixture["away"] ?? "", date: fixture["date"] ?? "", status: fixture["status"] ?? "", homeScore: fixture["homeScore"] ?? "", awayScore: fixture["awayScore"] ?? "")
+                FixtureView(team1: fixture["home"] ?? "", team2: fixture["away"] ?? "", date: fixture["date"] ?? "", status: fixture["status"] ?? "", homeScore: fixture["homeScore"] ?? "", awayScore: fixture["awayScore"] ?? "", isSpoilersOn: $isSpoilersOn)
             }
         }
         .onChange(of: matchday) { _, _ in
@@ -139,7 +140,6 @@ struct NextFixtureView: View {
         // find out when each matchday begins
         var matchdays: [[String: Any]] = []
         fillMatchdaysArray(arr: &matchdays)
-        //print(matchdays)
         
         // convert current local time into a given Matchday `x` in UK time
         matchday = findOutCurrentMatchday(arr: matchdays, currentUTCDate: formattedDate)
@@ -165,7 +165,7 @@ struct NextFixtureView: View {
         
         var matchdayNumber = 1
         for matchdayStartingDict in arr {
-
+            print(matchdayNumber)
             // do the same conversion as above but for each of the starting matchday dates
             if let matchdayDateStr = matchdayStartingDict[String(matchdayNumber)] as? String {
                 if let unwrappedDate = dateFormatter.date(from: matchdayDateStr) {
@@ -268,6 +268,8 @@ struct NextFixtureView: View {
                 // check if we are in a new matchday period
                 // TODO: Bruh the first matchday in the API call isnt necessarily the first one scheduled.
                 // TODO: thus, change to find the minimum date for a given matchday. good enough for now to create
+                // ACTUALLY ITS SORT OF OKAY BECAUSE THIS ONLY IMPACTS WHICH MATCHDAY IS SHOWN BY DEFAULT WHEN THE
+                // PROGRAM OPENS
                 // a ui but *needs* to be fixed
                 if (matchdayInteger != curInt) {
                     // we have progressed from matchday X, to matchday X+1

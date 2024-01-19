@@ -15,12 +15,14 @@ struct ContentView: View {
     
     @State var matchday: Int = 0 // 0 acts a default value
     
+    @State var isSpoilersOn: Bool = true
+    
     var body: some View {
         VStack {
             MatchdayView(selectedTeam: $selectedTeam, matches: $matches, matchday: $matchday)
             Divider()
                 .padding([.top, .bottom], 5)
-            NextFixtureView(selectedTeam: $selectedTeam, matches: $matches, matchday: $matchday)
+            NextFixtureView(selectedTeam: $selectedTeam, matches: $matches, matchday: $matchday, isSpoilersOn: $isSpoilersOn)
             Divider()
                 .padding([.top, .bottom], 5)
             
@@ -37,9 +39,15 @@ struct ContentView: View {
                 Spacer()
                 
                 Button(action: {
-                    
+                    isSpoilersOn = !isSpoilersOn
+                    print(isSpoilersOn)
                 }, label: {
-                    Image(systemName: "eye")
+                    if (isSpoilersOn) {
+                        Image(systemName: "eye")
+                    } else {
+                        Image(systemName: "eye.slash")
+                    }
+                    
                 }).buttonStyle(PlainButtonStyle())
                     .help("Hide spoilers")
                 

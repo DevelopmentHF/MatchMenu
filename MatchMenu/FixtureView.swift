@@ -17,6 +17,7 @@ struct FixtureView: View {
     @State var status: String
     @State var homeScore: String
     @State var awayScore: String
+    @Binding var isSpoilersOn: Bool
 
     var body: some View {
         HStack(alignment: .center, spacing: 8) {
@@ -30,20 +31,31 @@ struct FixtureView: View {
             HStack {
                 if (status == "FT" || status == "1H" || status == "2H") {
                     
-                    Text(homeScore)
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                    
-                    Text(status)
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                        .frame(minWidth: 100) // this is so the columns still align when there a diff length strings.
-                    
-                    Text(awayScore)
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                    
-                    
+                    if (!isSpoilersOn) {
+                        Image(systemName: "eye.slash.circle.fill")
+      
+                        
+                        Text(status)
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                            .frame(minWidth: 100) // this is so the columns still align when there a diff length strings.
+                        
+                        Image(systemName: "eye.slash.circle.fill")
+                    } else {
+                        Text(homeScore)
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                        
+                        Text(status)
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                            .frame(minWidth: 100) // this is so the columns still align when there a diff length strings.
+                        
+                        Text(awayScore)
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+     
                 } else {
                     Text(UtcToLocalTime(utcDate: date))
                         .font(.caption)
