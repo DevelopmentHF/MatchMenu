@@ -18,12 +18,13 @@ struct NextFixtureView: View {
     @Binding var isSpoilersOn: Bool
     
     @State var timer: Timer?
-    @State var timerDuration = 3600.0
+    @State var timerDuration = 3600.0   // update in background once per hr
     
     
     var body: some View {
+        // TODO: Should turn grey if unable to refresh again
         Button() {
-            
+            fetchData{}
         } label: {
             Image(systemName: "arrow.triangle.2.circlepath")
         }
@@ -41,15 +42,11 @@ struct NextFixtureView: View {
         }
         .onAppear() {
             fetchData {
+                startTimer()
                 calculateMatchday()
                 fixtures = findFixtures(matchdayNumber: matchday)
             }
         }
-    }
-    
-    func windowDidMiniaturize(_ notification: Notification) {
-        print("Window miniaturized")
-        // Your code to handle window miniaturization goes here
     }
     
     func startTimer() {
@@ -57,13 +54,10 @@ struct NextFixtureView: View {
         timer = nil
         
         timer = Timer.scheduledTimer(withTimeInterval: timerDuration, repeats: true) { _ in
-            test()
+            fetchData {}
         }
     }
-    
-    func test() {
-        print("test")
-    }
+ 
     
     private func findFixtures(matchdayNumber: Int) -> [[String: String]] {
         // init a list to store relevant fixtures
