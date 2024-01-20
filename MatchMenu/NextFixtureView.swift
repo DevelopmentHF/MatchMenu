@@ -17,20 +17,33 @@ struct NextFixtureView: View {
     @State var fixtures: [[String: String]] = []
     @Binding var isSpoilersOn: Bool
     
-    @State var timer: Timer?
+    @State var autoRefreshTimer: Timer?
     @State var timerDuration = 3600.0   // update in background once per hr
+    
+    @State private var isRefreshDisabled = false
+    
     
     
     var body: some View {
-        // TODO: Should turn grey if unable to refresh again
         Button() {
+            // get fresh data
             fetchData{}
+            
+            // Disable the button
+            isRefreshDisabled = true
+            
+            // Set a timer to enable the button after 1 min
+            Timer.scheduledTimer(withTimeInterval: 60, repeats: false) { _ in
+                isRefreshDisabled = false
+            }
+            
         } label: {
             Image(systemName: "arrow.triangle.2.circlepath")
         }
         .keyboardShortcut(.leftArrow)
         .buttonStyle(PlainButtonStyle())
         .help("Refresh live game scores")
+        .disabled(isRefreshDisabled)
         
         VStack {
             ForEach(fixtures, id: \.self) { fixture in
@@ -50,10 +63,10 @@ struct NextFixtureView: View {
     }
     
     func startTimer() {
-        timer?.invalidate()
-        timer = nil
+        autoRefreshTimer?.invalidate()
+        autoRefreshTimer = nil
         
-        timer = Timer.scheduledTimer(withTimeInterval: timerDuration, repeats: true) { _ in
+        autoRefreshTimer = Timer.scheduledTimer(withTimeInterval: timerDuration, repeats: true) { _ in
             fetchData {}
         }
     }
