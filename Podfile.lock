@@ -1,8 +1,14 @@
 PODS:
   - Keys (1.0.1)
+  - Sparkle (2.5.2)
 
 DEPENDENCIES:
   - Keys (from `Pods/CocoaPodsKeys`)
+  - Sparkle
+
+SPEC REPOS:
+  trunk:
+    - Sparkle
 
 EXTERNAL SOURCES:
   Keys:
@@ -10,7 +16,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
+  Sparkle: 0e335e5c704ac28dbea18cc0383e15a3927c28dc
 
-PODFILE CHECKSUM: e7a38f4fc34af7c168412bd4c43628b76dd54665
+PODFILE CHECKSUM: b354637d5ba7ceaff73f94a732070d9227cfe6fa
 
 COCOAPODS: 1.14.3

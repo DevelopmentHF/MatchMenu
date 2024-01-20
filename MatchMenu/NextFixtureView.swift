@@ -271,6 +271,9 @@ struct NextFixtureView: View {
                 // ACTUALLY ITS SORT OF OKAY BECAUSE THIS ONLY IMPACTS WHICH MATCHDAY IS SHOWN BY DEFAULT WHEN THE
                 // PROGRAM OPENS
                 // a ui but *needs* to be fixed
+                
+                // prolly remove this if condition and then check for new min in dict
+                
                 if (matchdayInteger != curInt) {
                     // we have progressed from matchday X, to matchday X+1
                     // let endDateOfMatchday = finddateinjson

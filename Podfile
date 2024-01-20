@@ -11,6 +11,10 @@ target 'MatchMenu' do
 
   # Uncomment the next line if you're using Swift
   use_frameworks!
+  
+  # Add Sparkle pod
+  pod 'Sparkle'
+  
   target 'MatchMenuTests' do
     inherit! :search_paths
     # Pods for testing
