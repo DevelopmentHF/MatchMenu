@@ -17,6 +17,8 @@ struct ContentView: View {
     
     @State private var isSpoilersOn: Bool = UserDefaults.standard.bool(forKey: "isSpoilersOnKey")
     
+    
+    
     init() {
         // Check if a value exists in UserDefaults
         if let savedValue = UserDefaults.standard.value(forKey: "isSpoilersOnKey") as? Bool {

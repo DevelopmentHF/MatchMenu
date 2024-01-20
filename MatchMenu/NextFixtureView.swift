@@ -17,7 +17,20 @@ struct NextFixtureView: View {
     @State var fixtures: [[String: String]] = []
     @Binding var isSpoilersOn: Bool
     
+    @State var timer: Timer?
+    @State var timerDuration = 3600.0
+    
+    
     var body: some View {
+        Button() {
+            
+        } label: {
+            Image(systemName: "arrow.triangle.2.circlepath")
+        }
+        .keyboardShortcut(.leftArrow)
+        .buttonStyle(PlainButtonStyle())
+        .help("Refresh live game scores")
+        
         VStack {
             ForEach(fixtures, id: \.self) { fixture in
                 FixtureView(team1: fixture["home"] ?? "", team2: fixture["away"] ?? "", date: fixture["date"] ?? "", status: fixture["status"] ?? "", homeScore: fixture["homeScore"] ?? "", awayScore: fixture["awayScore"] ?? "", isSpoilersOn: $isSpoilersOn)
@@ -28,14 +41,28 @@ struct NextFixtureView: View {
         }
         .onAppear() {
             fetchData {
-                    calculateMatchday()
-                    fixtures = findFixtures(matchdayNumber: matchday)
+                calculateMatchday()
+                fixtures = findFixtures(matchdayNumber: matchday)
             }
         }
-        .onDisappear() {
-            // with our timer, if the window is open, call the API once every minute(?tbd)
-            // change the timer to be like every hour if the app is open but window hidden
+    }
+    
+    func windowDidMiniaturize(_ notification: Notification) {
+        print("Window miniaturized")
+        // Your code to handle window miniaturization goes here
+    }
+    
+    func startTimer() {
+        timer?.invalidate()
+        timer = nil
+        
+        timer = Timer.scheduledTimer(withTimeInterval: timerDuration, repeats: true) { _ in
+            test()
         }
+    }
+    
+    func test() {
+        print("test")
     }
     
     private func findFixtures(matchdayNumber: Int) -> [[String: String]] {

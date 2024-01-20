@@ -42,6 +42,7 @@ struct CheckForUpdatesView: View {
 struct MatchMenuApp: App {
     
     private let updaterController: SPUStandardUpdaterController
+    
         
     init() {
         // If you want to start the updater manually, pass false to startingUpdater and call .startUpdater() later
