@@ -22,7 +22,7 @@ struct FixtureView: View {
     var body: some View {
         HStack(alignment: .center, spacing: 8) {
             Spacer()
-//            Text("\(team1)")
+
             Image(team1)
                 .resizable()
                 .frame(width: 24.57, height: 32.0)
@@ -34,11 +34,18 @@ struct FixtureView: View {
                     if (!isSpoilersOn) {
                         Image(systemName: "eye.slash.circle.fill")
       
+                        if (status != "FT") {
+                            Text("Live - " + status)
+                                .font(.caption)
+                                .foregroundStyle(.red)
+                                .frame(minWidth: 100)
+                        } else {
+                            Text(status)
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                                .frame(minWidth: 100) // this is so the columns still align when there a diff length strings.
+                        }
                         
-                        Text(status)
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                            .frame(minWidth: 100) // this is so the columns still align when there a diff length strings.
                         
                         Image(systemName: "eye.slash.circle.fill")
                     } else {
@@ -46,10 +53,17 @@ struct FixtureView: View {
                             .font(.caption)
                             .foregroundStyle(.secondary)
                         
-                        Text(status)
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                            .frame(minWidth: 100) // this is so the columns still align when there a diff length strings.
+                        if (status != "FT") {
+                            Text("Live - " + status)
+                                .font(.caption)
+                                .foregroundStyle(.red)
+                                .frame(minWidth: 100)
+                        } else {
+                            Text(status)
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                                .frame(minWidth: 100) // this is so the columns still align when there a diff length strings.
+                        }
                         
                         Text(awayScore)
                             .font(.caption)
@@ -66,7 +80,7 @@ struct FixtureView: View {
             
             
             Spacer()
-//            Text("\(team2)")
+
             Image(team2)
                 .resizable()
                 .frame(width: 24.57, height: 32.0)
