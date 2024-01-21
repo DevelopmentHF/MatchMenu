@@ -79,7 +79,7 @@
 		019CEA4737E6AF45691C405EFA7F3074 /* Pods-MatchMenu-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MatchMenu-acknowledgements.markdown"; sourceTree = "<group>"; };
 		0959D9467D7EC3CA958D9D670E3BAC11 /* Pods-MatchMenu-MatchMenuUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MatchMenu-MatchMenuUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		0B15C31FCEFBCABDB8338D392E7C01A0 /* MatchMenuKeys.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MatchMenuKeys.h; sourceTree = "<group>"; };
-		163FDD4CBC1B47DA7F224BD258437890 /* Pods-MatchMenu-MatchMenuUITests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-MatchMenu-MatchMenuUITests"; path = Pods_MatchMenu_MatchMenuUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		163FDD4CBC1B47DA7F224BD258437890 /* Pods_MatchMenu_MatchMenuUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MatchMenu_MatchMenuUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C954DFE9D10C53937176BD2688A728F /* Pods-MatchMenu-MatchMenuUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-MatchMenu-MatchMenuUITests.modulemap"; sourceTree = "<group>"; };
 		1DAA5F5AFACC0B42868E99679288463C /* Pods-MatchMenuTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MatchMenuTests.release.xcconfig"; sourceTree = "<group>"; };
 		2B08644E5662381A038EE8579D628192 /* SUExport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUExport.h; path = Sparkle.framework/Versions/B/Headers/SUExport.h; sourceTree = "<group>"; };
@@ -110,7 +110,7 @@
 		6FB2718192F4624ED599E36447230F01 /* Pods-MatchMenu-MatchMenuUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MatchMenu-MatchMenuUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		70DA582C4C43CFA0F622D8695392AAEE /* MatchMenuKeys.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MatchMenuKeys.m; sourceTree = "<group>"; };
 		7170A7BEB502BB9F4F71834B0D85EEDB /* Pods-MatchMenuTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MatchMenuTests-Info.plist"; sourceTree = "<group>"; };
-		742026E2B5AFCC5863DA83E9899D199F /* Pods-MatchMenuTests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-MatchMenuTests"; path = Pods_MatchMenuTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		742026E2B5AFCC5863DA83E9899D199F /* Pods_MatchMenuTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MatchMenuTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		767E7355CA921F7774E9846F5D659A17 /* Pods-MatchMenuTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MatchMenuTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		810870874F7A18BEC682BE68EABD2BE2 /* Pods-MatchMenu-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MatchMenu-acknowledgements.plist"; sourceTree = "<group>"; };
 		8121F45D8CC2452921E603E4E8F5E14F /* SPUStandardUpdaterController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUStandardUpdaterController.h; path = Sparkle.framework/Versions/B/Headers/SPUStandardUpdaterController.h; sourceTree = "<group>"; };
@@ -128,7 +128,7 @@
 		C4AA89F433D92260C7728AD4465CC687 /* SPUUpdaterSettings.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUUpdaterSettings.h; path = Sparkle.framework/Versions/B/Headers/SPUUpdaterSettings.h; sourceTree = "<group>"; };
 		CA81109A4F5C88B0EBD6CF4EA36D531E /* Pods-MatchMenu-MatchMenuUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MatchMenu-MatchMenuUITests-frameworks.sh"; sourceTree = "<group>"; };
 		D226446C0D0388DF545256BA990DB153 /* SUUpdatePermissionResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUUpdatePermissionResponse.h; path = Sparkle.framework/Versions/B/Headers/SUUpdatePermissionResponse.h; sourceTree = "<group>"; };
-		D316E74C83EC48BB87B5F34D7985B3AE /* Pods-MatchMenu */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-MatchMenu"; path = Pods_MatchMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D316E74C83EC48BB87B5F34D7985B3AE /* Pods_MatchMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MatchMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D64D11E007B8C081D177804BB9E85E29 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		D992A85877C0B020BCAE3921C74E4AED /* Sparkle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Sparkle.debug.xcconfig; sourceTree = "<group>"; };
 		D9BF534E3D665C3B882EE658A3B152DF /* SPUStandardUserDriver.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUStandardUserDriver.h; path = Sparkle.framework/Versions/B/Headers/SPUStandardUserDriver.h; sourceTree = "<group>"; };
@@ -206,9 +206,9 @@
 			isa = PBXGroup;
 			children = (
 				E8CACB8744373C1818777FFB8F84C67E /* Keys.framework */,
-				D316E74C83EC48BB87B5F34D7985B3AE /* Pods-MatchMenu */,
-				163FDD4CBC1B47DA7F224BD258437890 /* Pods-MatchMenu-MatchMenuUITests */,
-				742026E2B5AFCC5863DA83E9899D199F /* Pods-MatchMenuTests */,
+				D316E74C83EC48BB87B5F34D7985B3AE /* Pods_MatchMenu.framework */,
+				163FDD4CBC1B47DA7F224BD258437890 /* Pods_MatchMenu_MatchMenuUITests.framework */,
+				742026E2B5AFCC5863DA83E9899D199F /* Pods_MatchMenuTests.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -439,7 +439,7 @@
 			);
 			name = "Pods-MatchMenu";
 			productName = Pods_MatchMenu;
-			productReference = D316E74C83EC48BB87B5F34D7985B3AE /* Pods-MatchMenu */;
+			productReference = D316E74C83EC48BB87B5F34D7985B3AE /* Pods_MatchMenu.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		4AD565B4E632D7A79EC55EE1E0348480 /* Pods-MatchMenu-MatchMenuUITests */ = {
@@ -459,7 +459,7 @@
 			);
 			name = "Pods-MatchMenu-MatchMenuUITests";
 			productName = Pods_MatchMenu_MatchMenuUITests;
-			productReference = 163FDD4CBC1B47DA7F224BD258437890 /* Pods-MatchMenu-MatchMenuUITests */;
+			productReference = 163FDD4CBC1B47DA7F224BD258437890 /* Pods_MatchMenu_MatchMenuUITests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		594D20BFD061FEA6DBEBBBAD6E910294 /* Pods-MatchMenuTests */ = {
@@ -478,7 +478,7 @@
 			);
 			name = "Pods-MatchMenuTests";
 			productName = Pods_MatchMenuTests;
-			productReference = 742026E2B5AFCC5863DA83E9899D199F /* Pods-MatchMenuTests */;
+			productReference = 742026E2B5AFCC5863DA83E9899D199F /* Pods_MatchMenuTests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		5CE75F0DCD94A1A113665B974F74795F /* Keys */ = {
@@ -636,12 +636,11 @@
 			baseConfigurationReference = F622AFC67DB8CCE3892383EFBEEAEF5C /* Keys.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = 3K8BQC2F49;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -672,12 +671,11 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = 3K8BQC2F49;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -709,12 +707,11 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = 3K8BQC2F49;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -746,12 +743,11 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = 3K8BQC2F49;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -783,12 +779,11 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = 3K8BQC2F49;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -820,12 +815,11 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = 3K8BQC2F49;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1020,12 +1014,11 @@
 			baseConfigurationReference = 4552316DB4C6A1C55947512D05941D39 /* Keys.release.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = 3K8BQC2F49;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1056,12 +1049,11 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = 3K8BQC2F49;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
