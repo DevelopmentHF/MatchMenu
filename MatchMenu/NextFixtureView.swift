@@ -169,8 +169,9 @@ struct NextFixtureView: View {
 
 
         // find out when each matchday begins
-        var matchdays: [[String: Any]] = []
+        var matchdays: [[String: Any]] = [["1": "31 December 2050"]]
         fillMatchdaysArray(arr: &matchdays)
+        print(matchdays)
         
         // convert current local time into a given Matchday `x` in UK time
         matchday = findOutCurrentMatchday(arr: matchdays, currentUTCDate: formattedDate)
@@ -201,8 +202,13 @@ struct NextFixtureView: View {
             if let matchdayDateStr = matchdayStartingDict[String(matchdayNumber)] as? String {
                 if let unwrappedDate = dateFormatter.date(from: matchdayDateStr) {
                     
-                    if (formattedCurrentUTCDate <= unwrappedDate) {
+                    if (formattedCurrentUTCDate < unwrappedDate) {
+                        print("\(formattedCurrentUTCDate) is less than \(unwrappedDate)")
                         print("current matchday = \(matchdayNumber)")
+                        
+                        if (matchdayNumber > 1) {
+                            return matchdayNumber - 1
+                        }
                         return matchdayNumber
                     }
                 }
@@ -269,8 +275,7 @@ struct NextFixtureView: View {
         // get array of fixtures to find out which matchday is when
 
         if let responseArray = matches["response"] as? [[String: Any]] {
-            var matchdayInteger = 0
-            
+           
             // convert this to a date we can compare with system date
             let dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
 
@@ -278,9 +283,9 @@ struct NextFixtureView: View {
             dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
             
             for fixture in responseArray {
-                //print(fixture)
-                var curInt = 0
                 
+                // finds the round number of the current iterated fixture
+                var matchdayOfCurrentFixture = 0
                 if let leagueInfo = fixture["league"] as? [String: Any],
                    let round = leagueInfo["round"] as? String {
                     
@@ -293,42 +298,54 @@ struct NextFixtureView: View {
                         }
                     }
             
-                    curInt = extractRoundNumber(roundStr: round)
+                    matchdayOfCurrentFixture = extractRoundNumber(roundStr: round)
                 }
                 
-                // check if we are in a new matchday period
-                // TODO: Bruh the first matchday in the API call isnt necessarily the first one scheduled.
-                // TODO: thus, change to find the minimum date for a given matchday. good enough for now to create
-                // ACTUALLY ITS SORT OF OKAY BECAUSE THIS ONLY IMPACTS WHICH MATCHDAY IS SHOWN BY DEFAULT WHEN THE
-                // PROGRAM OPENS
-                // a ui but *needs* to be fixed
+                var newDate: String = ""
                 
-                // prolly remove this if condition and then check for new min in dict
-                
-                if (matchdayInteger != curInt) {
-                    // we have progressed from matchday X, to matchday X+1
-                    // let endDateOfMatchday = finddateinjson
-                    // new matchday
-                    matchdayInteger = curInt
+                if let fixtureInfo = fixture["fixture"] as? [String: Any],
+                   let fixtureDate = fixtureInfo["date"] as? String {
                     
-                    if let fixtureInfo = fixture["fixture"] as? [String: Any],
-                       let fixtureDate = fixtureInfo["date"] as? String {
-                        //print("fixture date = \(fixtureDate)")
-                        
-                        dateFormatter.dateFormat = dateFormat
+                    dateFormatter.dateFormat = dateFormat
 
-                        if let date = dateFormatter.date(from: fixtureDate) {
-                            let newFormat = "dd MMMM yyyy"
-                            dateFormatter.dateFormat = newFormat
-                            let formattedDate = dateFormatter.string(from: date)
-                            //print("Formatted Date: \(formattedDate)")
-                            
-                            arr.append([String(matchdayInteger): formattedDate])
-                        } else {
-                            print("Failed to convert string to date.")
+                    if let date = dateFormatter.date(from: fixtureDate) {
+                        let newFormat = "dd MMMM yyyy"
+                        dateFormatter.dateFormat = newFormat
+                        newDate = dateFormatter.string(from: date)
+                        
+                    } else {
+                        print("Failed to convert string to date.")
+                    }
+                    
+                }
+                
+                
+                // now, for this matchday, check if it's currently stored starting date is bigger than the
+                // the new one we've just calculated
+                if (arr.indices.contains(matchdayOfCurrentFixture - 1)) {
+                    if let existingDate = arr[matchdayOfCurrentFixture - 1][String(matchdayOfCurrentFixture)] {
+                        // key exists in dict
+                        
+                        // convert from strings back to date objects for comparison
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "dd MMMM yyyy"
+
+                        if let existingDateObj = dateFormatter.date(from: existingDate as! String),
+                           let newDateObj = dateFormatter.date(from: newDate) {
+                            // Compare the two dates
+                            if (newDateObj < existingDateObj) {
+                                // new minimum
+                                arr[matchdayOfCurrentFixture - 1][String(matchdayOfCurrentFixture)] = newDate
+                            }
                         }
                         
+                        
+                    } else {
+                        // new entry in dict -> must be a new minimum
+                        arr.append([String(matchdayOfCurrentFixture): newDate])
                     }
+                } else {
+                    arr.append([String(matchdayOfCurrentFixture): newDate])
                 }
             }
         }
