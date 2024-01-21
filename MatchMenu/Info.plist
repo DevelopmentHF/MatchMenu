@@ -6,6 +6,14 @@
 	<string>$(Apikey)</string>
 	<key>Configtest</key>
 	<string>$(CONFIG_TEST)</string>
+	<key>SUEnableDownloaderService</key>
+	<true/>
+	<key>SUEnableInstallerLauncherService</key>
+	<true/>
+	<key>SUFeedURL</key>
+	<string>https://developmenthf.github.io/MatchMenuRelease/appcast.xml</string>
+	<key>SUPublicEDKey</key>
+	<string>GF7TBUMQABPY13lpNDR9w9wAlkzFlcIiKRvBpEuaoNY=</string>
 	<key>Variable</key>
 	<string>infotest</string>
 </dict>
