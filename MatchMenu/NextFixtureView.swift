@@ -20,31 +20,11 @@ struct NextFixtureView: View {
     @State var autoRefreshTimer: Timer?
     @State var timerDuration = 3600.0   // update in background once per hr
     
-    @State private var isRefreshDisabled = false
+    @State private var isWindowOpen = false
     
     
     
     var body: some View {
-        Button() {
-            // get fresh data
-            fetchData{}
-            
-            // Disable the button
-            isRefreshDisabled = true
-            
-            // Set a timer to enable the button after 1 min
-            Timer.scheduledTimer(withTimeInterval: 60, repeats: false) { _ in
-                isRefreshDisabled = false
-            }
-            
-        } label: {
-            Image(systemName: "arrow.triangle.2.circlepath")
-        }
-        .keyboardShortcut(.leftArrow)
-        .buttonStyle(PlainButtonStyle())
-        .help("Refresh live game scores")
-        .disabled(isRefreshDisabled)
-        
         VStack {
             ForEach(fixtures, id: \.self) { fixture in
                 FixtureView(team1: fixture["home"] ?? "", team2: fixture["away"] ?? "", date: fixture["date"] ?? "", status: fixture["status"] ?? "", homeScore: fixture["homeScore"] ?? "", awayScore: fixture["awayScore"] ?? "", isSpoilersOn: $isSpoilersOn)
@@ -58,6 +38,23 @@ struct NextFixtureView: View {
                 startTimer()
                 calculateMatchday()
                 fixtures = findFixtures(matchdayNumber: matchday)
+            }
+            // https://stackoverflow.com/a/77294334/19459511
+            NotificationCenter.default.addObserver(
+                forName: NSWindow.didChangeOcclusionStateNotification, object: nil, queue: nil)
+            { notification in
+                //print("Visible: \((notification.object as! NSWindow).isVisible)")
+                isWindowOpen = (notification.object as! NSWindow).isVisible
+            }
+        }
+        .onChange(of: isWindowOpen) { _, _ in
+            // update once per hour if the window isnt showing, or once per minute if it is.
+            if (isWindowOpen) {
+                timerDuration = 60.0
+                startTimer()
+            } else {
+                timerDuration = 3600.0
+                startTimer()
             }
         }
     }
